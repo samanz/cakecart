@@ -1,0 +1,22 @@
+#header { background:#313131 url(../img/admin/header-bk.gif) repeat-x; }
+a#view { background: url(../img/admin/cart_go.png) 0% 50% no-repeat; }
+a#signout { background: url(../img/admin/user_go.png) 0% 50% no-repeat; }
+#nav { background: #d6d6d6; }
+
+#catalog #Catalog, #orders #Orders, #users #Users, #settings #Settings { background:#fff; }
+#catalog #Catalog:hover, 
+	#orders #Orders:hover, 
+	#users #Users:hover, 
+	#settings #Settings:hover { 
+		background:#555; 
+}
+
+#second li a { background:#ececec; border:1px solid #000; border-top:0; }
+#second li strong { background:#000; border:1px solid #999; border-top:0; }
+#second li li a { background:transparent; border:0; border-bottom:1px dashed #777; }
+#second li li.last a { border:0; }
+#second li ul { background:#FBF8E7; border:1px solid #000; border-top:0; }
+#second li li ul { border:0; margin-left:10px;}
+
+#content tr.alt { background:#eee; border:1px solid #ccc; border-left:0; border-right:0; }
+#content th { background:#FBF2BD; border-bottom:1px solid #000; }

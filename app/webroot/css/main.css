@@ -1,0 +1,161 @@
+.cake-sql-log {
+	position:fixed;
+	top:99%;
+	z-index:10;
+	width:100%;
+	background-color:#000;
+	color:#FFF;
+	border-collapse:collapse;
+	width:1000px;
+}
+
+.cake-sql-log caption {
+	background-color:#900;
+	color:#FFF;	
+}
+
+.cake-sql-log:hover {
+	top:auto;
+	bottom:0;
+}
+
+.cake-sql-log td {
+	padding:3px;
+	border:1px solid #999;
+	background-color:#EEE;
+	color:#000;
+}
+html {
+	background:#eee;
+}
+body {
+	max-width:960px;
+	margin:0 auto;
+	font-family:helvetica, arial, sans-serif;
+	padding:10px;
+	background:#fff;
+}
+
+img { border:0; }
+
+#header {
+	background:#000 url(../img/header-bk.gif) top left no-repeat;
+}
+
+#header ul {
+	background: #eee;
+	margin:0;
+	padding:0;
+	list-style:none;
+	overflow:hidden;
+	zoom:1;
+}
+#header li {
+	display:inline;
+	float:left;
+	margin:0;
+	padding:0;
+}
+#header li a {
+	padding:10px 30px;
+	display:block;
+	color:#000;
+	text-decoration:none;
+}
+#header li a:hover {
+	background:#938493;
+	color:#fff;
+}
+#secondary {
+	float:left;
+	width:20%;
+}
+#secondary h2 {
+	font-weight:normal;
+	font-size:15px;
+}
+#smallcart h2 a {
+	font-size:12px;
+}
+#smallcart table {
+	width:90%;
+}
+#smallcart th, #smallcart td {
+	font-size:11px;
+	text-align:left;
+	padding:3px;
+	vertical-align:top;
+}
+#smallcart th {
+	display:none;
+}
+#categories ul {
+	margin:0;
+	padding:0;
+	background:#eee;
+	list-style:none;
+	border-top:1px solid #fff;
+}
+#categories ul li a {
+	padding:5px;
+	background:#eee;
+	border:1px solid #eee;
+	border-bottom:1px solid #fff;
+	display:block;
+	text-decoration:none;
+	color:#000;
+	font-size:13px;
+}
+#categories ul strong {
+	padding:5px;
+	font-size:13px;
+	border-bottom:1px solid #fff;
+	display:block;
+}
+#categories ul li {
+}
+#categories ul li a:hover {
+	background:#fff;
+	color:#000;
+	border:1px solid #000;
+}
+#categories ul ul {
+	margin-left:15px;
+	border-top:0;
+}
+#content {
+	float:right;
+	width:78%;
+	padding:10px 0;
+	padding-bottom:30px;
+}
+#flashMessage {
+	background:#3892BA;
+	color:#fff;
+	padding:5px 10px;
+}
+
+#footer {
+	clear:both;
+	background:#eee;
+	padding:15px;
+	margin:20px 0 0;
+	color:#000;
+}
+
+/* =form */
+div.input {
+	overflow:hidden;
+	zoom:1;
+}
+div.input input, div.input select {
+	margin:7px;
+	padding:3px;
+}
+label {
+	float:left;
+	display:block;
+	width:150px;
+	text-align:right;
+	padding:10px;
+}

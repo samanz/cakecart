@@ -1,0 +1,15 @@
+label { display:block; }
+div.input { margin:10px 0; font-size:1.3em; }
+label { font-size:1.2em; }
+textarea { 
+	font-family:helvetica, arial, sans-serif; 
+	width:600px;
+	height:300px;
+}
+div.textarea { clear:both; }
+div.pounds { float:left; }
+div.ounces { float:left; margin:10px; }
+div.model { float:left; }
+div.name { float:left; margin:10px; }
+div.name input { width:430px; }
+div.price { clear:both; }

@@ -1,0 +1,15 @@
+body { font-family: "helvetica neue", helvetica, arial, sans-serif; font-size:62.5%; }
+p, a { font-size:1.2em; } 
+
+#header li a { font-size:1.1em; }
+
+#nav li a { font-size:1.57em; text-decoration:none; color:#000; }
+
+#second h2 { font-size:1.574em; }
+#second li a { font-size:1.311em; color:#000; text-decoration:none; }
+#second li strong { font-size:1.311em; color:#fff; text-decoration:none; }
+#second li li a { text-align:left; }
+#content h2 { font-size:1.95em; }
+
+#content table td, #content table th { font-size:1.3em; }
+#content table th { font-weight:bold; font-size:1.6em; }

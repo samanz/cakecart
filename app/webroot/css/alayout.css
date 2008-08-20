@@ -1,0 +1,28 @@
+#header { overflow:hidden; zoom:1; padding:10px; }
+#header a { float:left; }
+#header ul { float:right; display:inline; }
+#header li { display:inline; }
+#header li a { padding:19px 20px 19px 20px; color:#fff; }
+
+#nav { margin: 1px 0; overflow:hidden; zoom:1; padding-left:55px; }
+#nav li { display:inline; float:left; }
+#nav li a { padding:8px 20px; display:block; }
+#nav li a:hover { background:#000; color:#fff; }
+
+#main { overflow:hidden; zoom:1; }
+#second { float:left; width:190px; padding:32px 0 0 60px; }
+
+#second li a, 
+	#second li strong { 
+		padding:8px 23px 8px 0; text-align:right; display:block; margin-top:1px; 
+}
+
+#second li li a, 
+	#second li li strong { 
+		padding:8px 0 8px 23px; text-align:left; display:block; margin-top:1px; 
+}
+
+#content { padding:30px 20px; padding-left:60px; }
+#content.part { padding-left:20px; margin-left:270px; padding-top:30px; margin-right:20px; }
+#content table { width:100%; border-collapse:collapse; }
+#content table td, #content table th { padding:5px 8px; }
