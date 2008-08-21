@@ -38,16 +38,22 @@ class UrlComponent extends Object {
 	
 	function getCategoryId($url) {
 		$category = ClassRegistry::init('Category');
+		$category->unbindModel(
+         array('hasMany' => array('Products'))
+      );
 		$url = explode('/', $url);
-		$first = $category->find('Category.name = \'' . str_replace('_', ' ', $url[0]) . '\' AND Category.parent_id = 0');
+		$first = $category->find(array('Category.name' => str_replace('_', ' ', $url[0]),  'Category.parent_id' => 0));
 		if( !isset($first['Category']['id']) ) return false;
 		$parids = $first['Category']['id'];
 		return $this->getCategory($first['Category']['id'], array_slice($url, 1), $parids);
 	}
 	function getCategory($curid, $url, $parids) {
 		$category = ClassRegistry::init('Category');
+		$category->unbindModel(
+         array('hasMany' => array('Products'))
+      );
 		if(count($url) == 0) return $parids; 
-		$current = $category->findById($curid);
+		$current = $category->find( array('Category.id' => $curid) );
 		$next = -1;
 		foreach($current['SubCategory'] as $subcat) {
 			if(strtoupper($subcat['name']) == strtoupper(str_replace('_', ' ', $url[0])) ) $next = $subcat['id'];

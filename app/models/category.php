@@ -6,15 +6,13 @@ class Category extends AppModel
 	 var $hasMany = array(
 						 			'SubCategory' =>
 				              array('className' 	=> 'Category',
-								         		'order'      	=> 'SubCategory.order ASC',
-				                    'foreignKey' 	=> 'parent_id',
-								         		'dependent'   =>  true
+								         		'order'      	=> '`order` ASC',
+				                           'foreignKey' 	=> 'parent_id'
 								   					),
 								  'Products' =>
 											array('className' 	=> 'Product',
-														'order'				=> 'Products.order ASC',
-														'foreignKey'  => 'category_id',
-														'dependent' 	=> true
+														'order'		=> '`order` ASC',
+														'foreignKey'=> 'category_id'
 											)
                      );
 	function theRoots() {

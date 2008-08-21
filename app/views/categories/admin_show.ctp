@@ -14,7 +14,7 @@
          <td><?php echo $url->admin_cat_link($subcat['name'], $urls); ?></td>
          <td><?php echo $html->link('Edit', '/admin/categories/edit/' . implode('/', $this->params['bread']) . '/' . $subcat['name']); ?></td>
          <td>Move</td>
-         <td>Remove</td>
+         <td><?php echo $html->link('Remove', '/admin/categories/remove/' . implode('/', $this->params['bread']) . '/' . $subcat['name']); ?></td>
       </tr>
    <?php $count++; ?>
    <?php endforeach; ?>

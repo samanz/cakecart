@@ -94,5 +94,23 @@ class CategoriesController extends AppController {
 	   }
 	}
 	
+	function admin_remove() {
+	   $this->layout = 'admin';
+	   $this->set('current', 'catalog');
+	   list($id,$ids, $urls) = $this->Url->parents($this->params['pass']);
+		$this->params['ids'] = explode('/', $ids);
+		$this->params['bread'] = explode('/', $urls);
+	   if(!isset($_POST['sent'])) {
+	      $this->set('urls', $this->Url->removeLast($urls));
+	      $category = $this->Category->find(array('Category.id' => $id));
+	      $this->set('category', $category);
+	   } else {
+	      $this->Category->del($id);
+	      $this->Session->setFlash('Category Deleted');
+	      #$url = $this->Url->removeLast($urls);
+	      $this->redirect('/admin/categories/show/');
+	   }
+	}
+	
 }
 ?>
