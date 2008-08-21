@@ -13,3 +13,6 @@ div.model { float:left; }
 div.name { float:left; margin:10px; }
 div.name input { width:430px; }
 div.price { clear:both; }
+div.radio legend { display:block; font-size:1.3em }
+div.radio input { float:left; margin:10px; clear:left; }
+div.radio label { float:left; margin:10px; }

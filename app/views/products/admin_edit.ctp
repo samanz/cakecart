@@ -31,6 +31,7 @@
 	<textarea name="alternate1" id="alternate1" cols="60" rows="15"><?php echo htmlspecialchars($this->data['Product']['description'], ENT_COMPAT) ?></textarea>
 </object>
 <?php echo $form->hidden('description'); ?>
+<?php echo $form->input('status', array('type'=>'radio', 'options' => array('0' => 'Not In Stock', '1' => 'In Stock', '2'=> 'Not Shown'))); ?>
 <?php echo $form->input('image_url', array('type'=>'file')); ?>
 
 

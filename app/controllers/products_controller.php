@@ -54,5 +54,22 @@ class ProductsController extends AppController {
 	      }
 	   }
 	}
+	
+	function admin_remove($id = null) {
+	   $this->layout = 'admin';
+	   $this->set('current', 'catalog');
+	   list($ids, $url) = $this->Url->getUrl($id);
+	   $url = array_reverse($url);
+	   $this->params['bread'] = $url;
+	   if(!isset($_POST['sent'])) {
+	      $product = $this->Product->find(array('Product.id' => $id));
+	      $this->set('product', $product);
+	   } else {
+	      $this->Product->del($id);
+	      $this->Session->setFlash('Product Deleted');
+	      $this->redirect('/admin/categories/show/' . implode('/', $url));
+	   }
+	}
+	
 }
 ?>

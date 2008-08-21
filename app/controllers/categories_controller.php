@@ -51,6 +51,9 @@ class CategoriesController extends AppController {
 				));
 			$this->set('products', $products);
 			$this->render('admin_products');
+		} else {
+		   if(!isset($category['SubCategory'][0]))
+		      $this->render('admin_empty');
 		}
 	}
 	function admin_add() {

@@ -15,10 +15,17 @@
          <td><?php echo $product['Product']['id']; ?></td>
          <td><?php echo $url->admin_prod_link($product['Product'], '', false); ?></td>
          <td>$<?php echo number_format($product['Product']['price'], 2); ?></td>
-         <td>In Stock</td>
+         <?php 
+         $status = 'Out of Stock';
+         if($product['Product']['status'] == 1)
+            $status = 'In Stock';
+         if($product['Product']['status'] == 2)
+            $status = 'Not Shown';
+         ?>
+         <td><?php echo $status; ?></td>
          <td><?php echo $url->admin_prod_link($product['Product'], '', false, false); ?></td>
          <td>Move</td>
-         <td>Delete</td>
+         <td><?php echo $html->link('Remove', '/admin/products/remove/' . $product['Product']['id']); ?></td>
    </tr>
    <?php $count++; ?>
 <?php endforeach; ?>
