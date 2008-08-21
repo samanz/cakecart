@@ -12,10 +12,11 @@
       <tr<?php if($count % 2 == 0) echo ' class = "alt" '; ?>>
          <td><?php echo $subcat['id']; ?></td>
          <td><?php echo $url->admin_cat_link($subcat['name'], $urls); ?></td>
-         <td>Edit</td>
+         <td><?php echo $html->link('Edit', '/admin/categories/edit/' . implode('/', $this->params['bread']) . '/' . $subcat['name']); ?></td>
          <td>Move</td>
          <td>Remove</td>
       </tr>
    <?php $count++; ?>
    <?php endforeach; ?>
 </table>
+<?php echo $html->link('New Category', '/admin/categories/add/' . implode('/', $this->params['bread'])); ?>

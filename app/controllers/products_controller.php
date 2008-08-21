@@ -16,6 +16,25 @@ class ProductsController extends AppController {
 		$this->params['ids'][] = 'product';
 		$this->set('product', $product);
 	}
+	
+	function admin_add() {
+	   $this->layout = 'admin';
+	   $this->set('current', 'catalog');
+		list($id,$ids, $urls) = $this->Url->parents($this->params['pass']);
+		$this->params['bread'] = explode('/', $urls);
+	   if(!empty($this->data)) {
+         if($this->Image->check($this->data['Product']['image_url'])) {
+	         $this->data['Product']['image'] = $this->Image->save( $this->data['Product']['image_url'] );
+	      }
+	      $this->data['Product']['category_id'] = $id;
+	      if($this->Product->save($this->data)) {
+	         $this->Session->setFlash('Product Added');
+	         $this->redirect('/admin/categories/show/' . $urls);
+	      }
+	      
+	   }
+	}
+	
 	function admin_edit($id = null) {
 	   $this->layout = 'admin';
 	   $this->set('current', 'catalog');

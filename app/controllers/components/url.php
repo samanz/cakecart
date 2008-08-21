@@ -56,5 +56,15 @@ class UrlComponent extends Object {
 		$parids = $parids . '/' . $next;
 		return $this->getCategory($next, array_slice($url,1), $parids);
 	}
+	function removeLast($urls) {
+	   $urls = explode('/', $urls);
+      $url = array();
+      foreach($urls as $key => $u) {
+         if( (count($urls)-1) != $key)
+            $url[] = $u;
+      }
+      $url = implode('/', $url);
+      return $url;
+	}
 }
 ?>

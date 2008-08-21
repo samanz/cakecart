@@ -46,6 +46,7 @@ CREATE TABLE `products` (
 	`modified` DATETIME default NULL,
 	`pounds` INT(5) default '0',
 	`ounces` INT(5) default '0',
+	`status` ENUM('0','1','2') default `1`,
 	PRIMARY KEY  (`id`),
 	FOREIGN KEY (`category_id`) REFERENCES categories(id)
 );

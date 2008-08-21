@@ -50,6 +50,7 @@ class ImageComponent extends Object {
    		if (copy($tmp_name , $uploadfile )) {
    			return $img_url;
    		} else {
+   		   die('An Error has occured.');
    			return '';
    		}	
    	} else {

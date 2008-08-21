@@ -23,12 +23,15 @@ class UrlHelper extends Helper
 			$name = Inflector::slug($prod['name']);
       return $this->Html->url('/admin/products/edit/' . $prod['id']);
    }
-   function admin_prod_link($prod, $options = "", $model = false) {
+   function admin_prod_link($prod, $options = "", $model = false, $name = true) {
 			$out = '<a href = "' . $this->admin_prod($prod) .'" ' . $options . '>';
-			if($model) {
-				$out .= $prod['model'] . ' - ';
-			}
-         $out .= $prod['name'] . '</a>';
+			if($name) {
+			   if($model) {
+				   $out .= $prod['model'] . ' - ';
+			   }
+            $out .= $prod['name'] . '</a>';
+         } else
+         $out .= 'Edit</a>';
 			return $out;
    }
 	function cat($cat, $par = '') {
@@ -50,9 +53,12 @@ class UrlHelper extends Helper
 		$out .= $cat . '</a>';
 		return $out;
 	}
-	function admin_cat_link($cat, $par = '', $options = "") {
+	function admin_cat_link($cat, $par = '', $options = "", $name = true) {
 		$out = '<a href = "' . $this->admin_cat($cat, $par) . '" ' . $options . '>';
-		$out .= $cat . '</a>';
+		if($name)
+		   $out .= $cat . '</a>';
+		else
+		   $out .= 'edit</a>';
 		return $out;
 	}
 }

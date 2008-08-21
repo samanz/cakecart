@@ -3,7 +3,7 @@ class CategoriesController extends AppController {
 	var $name = 'Categories';
 	var $layout = 'shop';
 	var $uses = array('Category', 'Product');
-	var $components = array('Url', 'Session');
+	var $components = array('Url', 'Session', 'Image');
 	var $helpers = array('Url', 'Html');
 	
 	function admin_index() {
@@ -52,6 +52,43 @@ class CategoriesController extends AppController {
 			$this->set('products', $products);
 			$this->render('admin_products');
 		}
+	}
+	function admin_add() {
+	   $this->layout = 'admin';
+	   $this->set('current', 'catalog');
+	   list($id,$ids, $urls) = $this->Url->parents($this->params['pass']);
+		$this->params['ids'] = explode('/', $ids);
+		$this->params['bread'] = explode('/', $urls);
+      if(!empty($this->data)) {
+         if($this->Image->check($this->data['Category']['image_url'])) {
+	         $this->data['Category']['image'] = $this->Image->saveCat( $this->data['Category']['image_url'] );
+	      }
+         $this->data['Category']['parent_id'] = $id;
+         if($this->Category->save($this->data)) {
+            $this->Session->setFlash('Category Added');
+            $this->redirect('/admin/categories/show/' . $urls);
+         }
+      }
+	}
+	function admin_edit() {
+	   $this->layout = 'admin';
+	   $this->set('current', 'catalog');
+	   list($id,$ids, $urls) = $this->Url->parents($this->params['pass']);
+		$this->params['ids'] = explode('/', $ids);
+		$this->params['bread'] = explode('/', $urls);
+	   if(empty($this->data)) {
+	      $this->Category->id = $id;
+	      $this->data = $this->Category->read();
+	   } else {
+	      if($this->Image->check($this->data['Category']['image_url'])) {
+	         $this->data['Category']['image'] = $this->Image->saveCat( $this->data['Category']['image_url'] );
+	      }
+         if($this->Category->save($this->data)) {
+            $this->Session->setFlash('Category Edited');
+            $url = $this->Url->removeLast($urls);
+            $this->redirect('/admin/categories/show/' . $url);
+         }
+	   }
 	}
 	
 }
