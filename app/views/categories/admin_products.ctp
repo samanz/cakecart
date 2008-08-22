@@ -4,7 +4,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Price</th>
-      <th>Status</th>
+      <th>In Stock</th>
       <th>Edit</th>
       <th>Move</th>
       <th>Delete</th>
@@ -16,11 +16,11 @@
          <td class = "prodName"><?php echo $url->admin_prod_link($product['Product'], '', false); ?></td>
          <td>$<?php echo number_format($product['Product']['price'], 2); ?></td>
          <?php 
-         $status = 'Out of Stock';
+         $status = 'No';
          if($product['Product']['status'] == 1)
-            $status = 'In Stock';
+            $status = 'Yes';
          if($product['Product']['status'] == 2)
-            $status = 'Not Shown';
+            $status = 'Disabled';
          ?>
          <td><?php echo $status; ?></td>
          <td class = "prodEdit"><?php echo $url->admin_prod_link($product['Product'], '', false, false); ?></td>

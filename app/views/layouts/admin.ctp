@@ -23,16 +23,17 @@
             <li><?php echo $html->link('Users', '/admin/users', array('id' => 'Users')); ?></li>
             <li><?php echo $html->link('Settings', '/admin/settings', array('id' => 'Settings')); ?></li>
          </ul>
-         <div id = "main">
+         <div id = "main"<?php if(isset($sidebar)) echo ' class = "part" '?>>
             <?php if(isset($sidebar)): ?>
             <div id = "second">
                <?php foreach($sidebar as $side) echo $this->element($side); ?>
             </div>
             <?php endif; ?>
-            <div id = "content" <?php if(isset($sidebar)) echo 'class = "part" '?>>
+            <div id = "content"<?php if(isset($sidebar)) echo ' class = "part" '?>>
                <?php echo $content_for_layout; ?>
             </div>
          </div>
+         <div id = "footer"><p>CakeCart Shopping Cart.</p></div>
       </div>
    </body>
 </html>

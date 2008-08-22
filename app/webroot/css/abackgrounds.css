@@ -3,24 +3,33 @@ a#view { background: url(../img/admin/cart_go.png) 0% 50% no-repeat; }
 a#signout { background: url(../img/admin/user_go.png) 0% 50% no-repeat; }
 #nav { background: #d6d6d6; }
 
-#catalog #Catalog, #orders #Orders, #users #Users, #settings #Settings { background:#fff; }
+#catalog #Catalog, 
+#orders #Orders, 
+#users #Users, 
+#settings #Settings { 
+	background:#404040; 
+	color:#fff; 
+}
 #catalog #Catalog:hover, 
 	#orders #Orders:hover, 
 	#users #Users:hover, 
 	#settings #Settings:hover { 
 		background:#555; 
 }
-
+/*
 #second li a { background:#ececec; border:1px solid #000; border-top:0; }
 #second li strong { background:#000; border:1px solid #999; border-top:0; }
 #second li li a { background:transparent; border:0; border-bottom:1px dashed #777; }
 #second li li.last a { border:0; }
 #second li ul { background:#FBF8E7; border:1px solid #000; border-top:0; }
 #second li li ul { border:0; margin-left:10px;}
+*/
+#main.part { background:url(../img/admin/main-bk.gif) top left repeat-y;}
 
 #content tr.alt { background:#eee; border:1px solid #ccc; border-left:0; border-right:0; }
 #content tr:hover td { background:#F8FFD4; }
 #content th { background:#FBF2BD; border-bottom:1px solid #000; }
+#footer { background:#d6d6d6; }
 a.button { 
 	background:#eee; 
 	border:1px solid #ddd; 
@@ -30,6 +39,9 @@ a.button {
 a.newCategory { background:#eee url(../img/admin/folder_add.png) 5% 50% no-repeat; }
 a.newProduct { background:#eee url(../img/admin/newspaper_add.png) 5% 50% no-repeat; }
 .catName a { background:url(../img/admin/folder.png) 0% 50% no-repeat; padding-left:20px; }
+#categories ul a, #categories ul strong  {
+	background:url(../img/admin/folder.png) 0% 50% no-repeat;
+}
 .catEdit a { background:url(../img/admin/folder_edit.png) 0% 50% no-repeat; padding-left:20px; }
 .catRemove a { background:url(../img/admin/folder_delete.png) 0% 50% no-repeat; padding-left:20px; }
 
