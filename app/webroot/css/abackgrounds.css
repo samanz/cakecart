@@ -19,4 +19,20 @@ a#signout { background: url(../img/admin/user_go.png) 0% 50% no-repeat; }
 #second li li ul { border:0; margin-left:10px;}
 
 #content tr.alt { background:#eee; border:1px solid #ccc; border-left:0; border-right:0; }
+#content tr:hover td { background:#F8FFD4; }
 #content th { background:#FBF2BD; border-bottom:1px solid #000; }
+a.button { 
+	background:#eee; 
+	border:1px solid #ddd; 
+	border-right-color:#000; 
+	border-bottom-color:#000;
+}
+a.newCategory { background:#eee url(../img/admin/folder_add.png) 5% 50% no-repeat; }
+a.newProduct { background:#eee url(../img/admin/newspaper_add.png) 5% 50% no-repeat; }
+.catName a { background:url(../img/admin/folder.png) 0% 50% no-repeat; padding-left:20px; }
+.catEdit a { background:url(../img/admin/folder_edit.png) 0% 50% no-repeat; padding-left:20px; }
+.catRemove a { background:url(../img/admin/folder_delete.png) 0% 50% no-repeat; padding-left:20px; }
+
+.prodName a { background:url(../img/admin/newspaper.png) 0% 50% no-repeat; padding-left:20px; }
+.prodEdit a { background:url(../img/admin/newspaper_go.png) 0% 50% no-repeat; padding-left:20px; }
+.prodRemove a { background:url(../img/admin/newspaper_delete.png) 0% 50% no-repeat; padding-left:20px; }

@@ -25,4 +25,5 @@
 #content { padding:30px 20px; padding-left:60px; }
 #content.part { padding-left:20px; margin-left:270px; padding-top:30px; margin-right:20px; }
 #content table { width:100%; border-collapse:collapse; }
-#content table td, #content table th { padding:5px 8px; }
+#content table td, #content table th { padding:10px 8px; }
+a.button { padding:8px 10px 8px 25px; display:block; float:left; margin:7px 0; }

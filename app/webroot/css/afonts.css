@@ -1,6 +1,8 @@
 body { font-family: "helvetica neue", helvetica, arial, sans-serif; font-size:62.5%; }
-p, a { font-size:1.2em; } 
+p { font-size:1.2em; } 
 
+a { color:#000; }
+a:hover { color:#333; }
 #header li a { font-size:1.1em; }
 
 #nav li a { font-size:1.57em; text-decoration:none; color:#000; }
@@ -13,3 +15,4 @@ p, a { font-size:1.2em; }
 
 #content table td, #content table th { font-size:1.3em; }
 #content table th { font-weight:bold; font-size:1.6em; }
+a.button { color:#000; text-decoration:none; font-size:1.2em; }

@@ -13,7 +13,7 @@
 <?php foreach($products as $product): ?>
    <tr<?php if($count % 2 == 0) echo ' class = "alt" '; ?>>
          <td><?php echo $product['Product']['id']; ?></td>
-         <td><?php echo $url->admin_prod_link($product['Product'], '', false); ?></td>
+         <td class = "prodName"><?php echo $url->admin_prod_link($product['Product'], '', false); ?></td>
          <td>$<?php echo number_format($product['Product']['price'], 2); ?></td>
          <?php 
          $status = 'Out of Stock';
@@ -23,11 +23,11 @@
             $status = 'Not Shown';
          ?>
          <td><?php echo $status; ?></td>
-         <td><?php echo $url->admin_prod_link($product['Product'], '', false, false); ?></td>
-         <td>Move</td>
-         <td><?php echo $html->link('Remove', '/admin/products/remove/' . $product['Product']['id']); ?></td>
+         <td class = "prodEdit"><?php echo $url->admin_prod_link($product['Product'], '', false, false); ?></td>
+         <td class = "prodMove">Move</td>
+         <td class = "prodRemove"><?php echo $html->link('Remove', '/admin/products/remove/' . $product['Product']['id']); ?></td>
    </tr>
    <?php $count++; ?>
 <?php endforeach; ?>
 </table>
-<?php echo $html->link('New Product', '/admin/products/add/' . implode('/', $this->params['bread'])); ?>
+<?php echo $html->link('New Product', '/admin/products/add/' . implode('/', $this->params['bread']), array('class'=> 'button newProduct')); ?>
