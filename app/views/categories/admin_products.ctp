@@ -24,7 +24,7 @@
          ?>
          <td><?php echo $status; ?></td>
          <td class = "prodEdit"><?php echo $url->admin_prod_link($product['Product'], '', false, false); ?></td>
-         <td class = "prodMove">Move</td>
+         <td class = "prodMove"><?php echo $html->link('Move', '/admin/products/move/' . $product['Product']['id']); ?></td>
          <td class = "prodRemove"><?php echo $html->link('Remove', '/admin/products/remove/' . $product['Product']['id']); ?></td>
    </tr>
    <?php $count++; ?>

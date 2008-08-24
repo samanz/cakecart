@@ -18,11 +18,17 @@ class Category extends AppModel
 	function theRoots() {
 		return $this->findAllByParentId(0);
 	}
-	function getTree()
+	function getTree($unbind = true)
 	{
-		$this->unbindModel(
-			array('hasMany' => array('SubCategory', 'Products'))
-		);
+	   if($unbind) {
+		   $this->unbindModel(
+			   array('hasMany' => array('SubCategory', 'Products'))
+		   );
+	   } else {
+	      $this->unbindModel(
+			   array('hasMany' => array('SubCategory'))
+		   );
+	   }
 		$data = $this->findAll(null,null,"Category.parent_id ASC");
 		
 		$rows = array();
@@ -63,6 +69,40 @@ class Category extends AppModel
 		 }
 		 $leaves = array_diff($candidates, $parents);
 		 return $leaves;
+	}
+	function selectTree($exclude = -1, $with_products = False, $symbol = '--')
+	{
+		$tree = $this->getTree(false);
+		#die('<pre>' . print_r($tree, True) . '</pre>');
+		$selectTree = array();
+		foreach($tree as $t) {
+			if(($with_products or count($t['Products']) == 0) and $t['Category']['id'] != $exclude) {
+				$selectTree[$t['Category']['id']] = $t['Category']['name'];
+				if(isset($t['SubCategory'])) {
+					$leaves = $this->_leaves($t['SubCategory'], $symbol, $exclude, $with_products, $symbol);
+					foreach($leaves as $key => $leaf) {
+						$selectTree[$key] = $leaf;
+					}
+				}
+			}
+		}
+		return $selectTree;
+	}
+	
+	function _leaves($array, $space, $exclude, $with_products, $symbol) {
+		$selectTree = array();
+		foreach($array as $t) {
+			if(($with_products or count($t['Products']) == 0) and $t['Category']['id'] != $exclude) {
+				$selectTree[$t['Category']['id']] = $space . $t['Category']['name'];
+				if(isset($t['SubCategory'])) {
+					$leaves = $this->_leaves($t['SubCategory'], $space . $symbol, $exclude, $with_products, $symbol);
+					foreach($leaves as $key => $leaf) {
+						$selectTree[$key] = $leaf;
+					}
+				}
+			}
+		}
+		return $selectTree;
 	}
 	
 }	

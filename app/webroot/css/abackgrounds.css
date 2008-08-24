@@ -31,14 +31,16 @@ a#signout { background: url(../img/admin/user_go.png) 0% 50% no-repeat; }
 #content th { background:#FBF2BD; border-bottom:1px solid #000; }
 #footer { background:#d6d6d6; }
 a.button { 
-	background:#eee; 
+	background:#F9FAFB; 
 	border:1px solid #ddd; 
 	border-right-color:#000; 
 	border-bottom-color:#000;
 }
-a.newCategory { background:#eee url(../img/admin/folder_add.png) 5% 50% no-repeat; }
-a.newProduct { background:#eee url(../img/admin/newspaper_add.png) 5% 50% no-repeat; }
+a.newCategory { background:#F9FAFB url(../img/admin/folder_add.png) 5% 50% no-repeat; }
+a.newProduct { background:#F9FAFB url(../img/admin/newspaper_add.png) 5% 50% no-repeat; }
 .catName a { background:url(../img/admin/folder.png) 0% 50% no-repeat; padding-left:20px; }
+.prodMove a { background:url(../img/admin/newspaper_link.png) 0% 50% no-repeat; padding-left:20px; }
+
 #categories ul a, #categories ul strong  {
 	background:url(../img/admin/folder.png) 0% 50% no-repeat;
 }

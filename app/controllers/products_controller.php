@@ -4,6 +4,7 @@ class ProductsController extends AppController {
 	var $layout = 'shop';
 	var $components = array('Url', 'Session', 'Image');
 	var $helpers = array('Html', 'Url');
+	var $uses = array('Product', 'Category');
 	
 	function index() {
 		$this->set('products', $this->Product->find('all'));
@@ -69,6 +70,25 @@ class ProductsController extends AppController {
 	      $this->Session->setFlash('Product Deleted');
 	      $this->redirect('/admin/categories/show/' . implode('/', $url));
 	   }
+	}
+	
+	function admin_move($id = null) {
+	   $this->layout = 'admin';
+	   $this->set('current', 'catalog');
+	   list($ids, $url) = $this->Url->getUrl($id);
+	   $url = array_reverse($url);
+	   $this->params['bread'] = $url;
+      if(empty($this->data)){
+         $options = $this->Category->selectTree();
+         $this->set('options', $options);
+         $this->Product->id = $id;
+         $this->data = $this->Product->read();
+      } else {
+         if($this->Product->save($this->data)) {
+   	      $this->Session->setFlash('Product Moved');
+   	      $this->redirect('/admin/categories/show/' . implode('/', $url));
+         }
+      }
 	}
 	
 }
