@@ -1,5 +1,4 @@
-<h2 id = "catName"><?php echo $category['Category']['name']; ?></h2>
-<?php echo $this->element('admin_search'); ?>
+<h2>Search Results:</h2>
 <table>
    <tr>
       <th>ID</th>
@@ -31,4 +30,3 @@
    <?php $count++; ?>
 <?php endforeach; ?>
 </table>
-<?php echo $html->link('New Product', '/admin/products/add/' . implode('/', $this->params['bread']), array('class'=> 'button newProduct')); ?>

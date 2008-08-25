@@ -1,4 +1,5 @@
-<h2>Top-Level Categories</h2>
+<h2 id = "catName">Top-Level Categories</h2>
+<?php echo $this->element('admin_search'); ?>
 <table>
    <tr>
       <th>Id</th>

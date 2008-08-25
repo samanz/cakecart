@@ -42,3 +42,9 @@ a.button { padding:8px 10px 8px 25px; display:block; float:left; margin:7px 0; }
 /* Empty Page */
 #addcategory, #addproduct { float:left; width:49%; }
 #addcategory p , #addproduct p { clear:left; }
+
+/* Categories page */
+#catName { width:55%; float:left; }
+form#search { width:40%; float:right; text-align:right; }
+form#search div { margin:0; }
+form#search div label { display:inline; }

@@ -91,5 +91,13 @@ class ProductsController extends AppController {
       }
 	}
 	
+	function admin_search() {
+	   $this->layout = 'admin';
+	   $this->set('current', 'catalog');
+      $products = $this->Product->stringSearch($this->params['url']['terms'], array('name', 'model'));
+      $this->set('products', $products);
+      $this->set('sidebar', array('admin_categories'));
+	}
+	
 }
 ?>
