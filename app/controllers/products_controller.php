@@ -79,10 +79,10 @@ class ProductsController extends AppController {
 	   $url = array_reverse($url);
 	   $this->params['bread'] = $url;
       if(empty($this->data)){
-         $options = $this->Category->selectTree();
-         $this->set('options', $options);
          $this->Product->id = $id;
          $this->data = $this->Product->read();
+         $options = $this->Category->selectTree($this->data['Product']['category_id'], True);
+         $this->set('options', $options);
       } else {
          if($this->Product->save($this->data)) {
    	      $this->Session->setFlash('Product Moved');

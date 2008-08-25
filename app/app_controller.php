@@ -19,7 +19,7 @@ class AppController extends Controller {
       return $total;      
    }
    
-   function debugger($data) {
+   function d($data) {
       die('<pre>' . print_r($data, true) . '</pre>'); 
    }
 }

@@ -124,9 +124,29 @@ class CategoriesController extends AppController {
 	   } else {
 	      $this->Category->del($id);
 	      $this->Session->setFlash('Category Deleted');
-	      #$url = $this->Url->removeLast($urls);
-	      $this->redirect('/admin/categories/show/');
+	      $url = $this->Url->removeLast($urls);
+	      $this->redirect('/admin/categories/show/' . $url);
 	   }
+	}
+	
+	function admin_move() {
+	   $this->layout = 'admin';
+	   $this->set('current', 'catalog');
+	   list($id,$ids, $urls) = $this->Url->parents($this->params['pass']);
+		$this->params['ids'] = explode('/', $ids);
+		$this->params['bread'] = explode('/', $urls);
+	   if(empty($this->data)){
+         $this->Category->id = $id;
+         $this->data = $this->Category->read();
+         $options = $this->Category->selectTree($this->data['Category']['id']);
+         $this->set('options', $options);
+      } else {
+         if($this->Category->save($this->data)) {
+      	   $this->Session->setFlash('Category Moved');
+            $url = $this->Url->removeLast($urls);
+            $this->redirect('/admin/categories/show/' . $url);
+         }
+      }
 	}
 	
 }

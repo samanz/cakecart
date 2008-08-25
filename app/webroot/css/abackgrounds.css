@@ -38,8 +38,9 @@ a.button {
 }
 a.newCategory { background:#F9FAFB url(../img/admin/folder_add.png) 5% 50% no-repeat; }
 a.newProduct { background:#F9FAFB url(../img/admin/newspaper_add.png) 5% 50% no-repeat; }
-.catName a { background:url(../img/admin/folder.png) 0% 50% no-repeat; padding-left:20px; }
+.catName a { background:url(../img/admin/folder.png) 0% 50% no-repeat; padding-left:20px; display:block; }
 .prodMove a { background:url(../img/admin/newspaper_link.png) 0% 50% no-repeat; padding-left:20px; }
+.catMove a { background:url(../img/admin/folder_wrench.png) 0% 50% no-repeat; padding-left:20px; }
 
 #categories ul a, #categories ul strong  {
 	background:url(../img/admin/folder.png) 0% 50% no-repeat;
@@ -47,6 +48,6 @@ a.newProduct { background:#F9FAFB url(../img/admin/newspaper_add.png) 5% 50% no-
 .catEdit a { background:url(../img/admin/folder_edit.png) 0% 50% no-repeat; padding-left:20px; }
 .catRemove a { background:url(../img/admin/folder_delete.png) 0% 50% no-repeat; padding-left:20px; }
 
-.prodName a { background:url(../img/admin/newspaper.png) 0% 50% no-repeat; padding-left:20px; }
+.prodName a { background:url(../img/admin/newspaper.png) 0% 50% no-repeat; padding-left:20px; display:block;}
 .prodEdit a { background:url(../img/admin/newspaper_go.png) 0% 50% no-repeat; padding-left:20px; }
 .prodRemove a { background:url(../img/admin/newspaper_delete.png) 0% 50% no-repeat; padding-left:20px; }
