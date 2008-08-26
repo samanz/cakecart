@@ -130,6 +130,7 @@ CREATE TABLE `orders` (
 	`shipping_method` VARCHAR(60) NOT NULL,
 	`payment_method` INT(2) NOT NULL,
 	`created` DATETIME default NULL,
+	`status` int(2) default `0`,
 	PRIMARY KEY (`id`)
 );
 

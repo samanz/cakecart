@@ -45,6 +45,9 @@ a.newProduct { background:#F9FAFB url(../img/admin/newspaper_add.png) 5% 50% no-
 #categories ul a, #categories ul strong  {
 	background:url(../img/admin/folder.png) 0% 50% no-repeat;
 }
+#side_orders ul a, #side_orders ul strong  {
+	background:url(../img/admin/package.png) 0% 50% no-repeat;
+}
 .catEdit a { background:url(../img/admin/folder_edit.png) 0% 50% no-repeat; padding-left:20px; }
 .catRemove a { background:url(../img/admin/folder_delete.png) 0% 50% no-repeat; padding-left:20px; }
 

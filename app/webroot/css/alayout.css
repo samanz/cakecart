@@ -15,22 +15,10 @@
 #second ul {
 	margin:2px 15px;
 }
-#categories ul a, #categories ul strong {
+#second ul a, #second ul strong {
 	padding:2px 0 2px 19px;
 	display:block;
 }
-
-/*
-#second li a, 
-	#second li strong { 
-		padding:8px 23px 8px 0; text-align:right; display:block; margin-top:1px; 
-}
-
-#second li li a, 
-	#second li li strong { 
-		padding:8px 0 8px 23px; text-align:left; display:block; margin-top:1px; 
-}
-*/
 
 #content { padding:20px 50px; }
 #content.part { padding:10px; margin-left:230px; }
