@@ -88,6 +88,26 @@ CREATE TABLE `cart_items` (
 	FOREIGN KEY (`product_id`) REFERENCES products(`id`)
 );
 
+# Users Table
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`password` VARCHAR(50) NOT NULL,
+	`first` VARCHAR(50) NOT NULL,
+	`last` VARCHAR(50) NOT NULL,
+	`email` VARCHAR(50) NOT NULL,
+	`phone` VARCHAR(50) NULL,
+	`created` DATETIME default null,
+	`admin` ENUM('0', '1') default 0,
+	`company` VARCHAR(50) NULL,
+	 PRIMARY KEY (`id`)
+);
+
+INSERT INTO `users` (`id`,`password`,`first`,`last`,`email`,`phone`,`created`,`admin`,`company`) 
+	VALUES ('2','94f3b4c7165512a202327b6c698ee71162d5e55c','Sam','Anzaroot','samanzaroot@gmail.com','718-207-2887','2008-08-28 15:54:50','0','');
+INSERT INTO `users` (`id`,`password`,`first`,`last`,`email`,`phone`,`created`,`admin`,`company`) 
+	VALUES ('3','c6b02634a05cc04ed831ecf653f1e0c4303764cf','Demo','Demo','demo@demo.com','','2008-08-28 19:56:10','1',NULL);
+
 # Orders Table
 
 DROP TABLE IF EXISTS `orders`;
@@ -115,8 +135,10 @@ CREATE TABLE `orders` (
 	FOREIGN KEY (`user_id`) REFERENCES users(`id`)
 );
 
-INSERT INTO `orders` (`id`,`user_id`,`first`,`last`,`company`,`address`,`address2`,`city`,`state`,`zip`,`bill_address`,`bill_address2`,`bill_city`,`bill_state`,`bill_zip`,`shipping`,`tax`,`paid`,`shipping_method`,`payment_method`,`created`,`status`) VALUES ('1','2','Sam','Anzaroot','','321 Fake St','','Brooklyn','NY','11229','2084 Ocean Parkway','','Brooklyn','NY','11223','19.23','2.35','0','ground','0','2008-08-28 15:54:50','0');
-INSERT INTO `orders` (`id`,`user_id`,`first`,`last`,`company`,`address`,`address2`,`city`,`state`,`zip`,`bill_address`,`bill_address2`,`bill_city`,`bill_state`,`bill_zip`,`shipping`,`tax`,`paid`,`shipping_method`,`payment_method`,`created`,`status`) VALUES ('2','2','Sap','Pardon','','123 Fake St','','Brooklyn','NY','11229','2084 Ocean Parkway','','Brooklyn','NY','11223','19.23','2.35','0','ground','0','2008-08-28 15:54:50','1');
+INSERT INTO `orders` (`id`,`user_id`,`address`,`address2`,`city`,`state`,`zip`,`bill_address`,`bill_address2`,`bill_city`,`bill_state`,`bill_zip`,`shipping`,`tax`,`paid`,`shipping_method`,`payment_method`,`created`,`status`) 
+	VALUES (1,2,'321 Fake St','','Brooklyn','NY','11229','2084 Ocean Parkway','','Brooklyn','NY','11223','19.23','2.35','0','ground','0','2008-08-28 15:54:50','0');
+INSERT INTO `orders` (`id`,`user_id`,`address`,`address2`,`city`,`state`,`zip`,`bill_address`,`bill_address2`,`bill_city`,`bill_state`,`bill_zip`,`shipping`,`tax`,`paid`,`shipping_method`,`payment_method`,`created`,`status`) 
+	VALUES (2,2,'123 Fake St','','Brooklyn','NY','11229','2084 Ocean Parkway','','Brooklyn','NY','11223','19.23','2.35','0','ground','0','2008-08-28 15:54:50','1');
 
 # Order Items Table
 
@@ -155,25 +177,6 @@ INSERT INTO `images` (`id`,`image`,`product_id`) VALUES ('3','next61.jpg','6');
 INSERT INTO `images` (`id`,`image`,`product_id`) VALUES ('4','next62.jpg','6');
 INSERT INTO `images` (`id`,`image`,`product_id`) VALUES ('9','power.jpg','7');
 
-# Users Table
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-	`password` VARCHAR(50) NOT NULL,
-	`first` VARCHAR(50) NOT NULL,
-	`last` VARCHAR(50) NOT NULL,
-	`email` VARCHAR(50) NOT NULL,
-	`phone` VARCHAR(50) NULL,
-	`created` DATETIME default null,
-	`admin` ENUM('0', '1') default 0,
-	`company` VARCHAR(50) NULL,
-	 PRIMARY KEY (`id`)
-);
-
-INSERT INTO `users` (`id`,`password`,`first`,`last`,`email`,`phone`,`created`,`admin`,`company`) 
-	VALUES ('2','94f3b4c7165512a202327b6c698ee71162d5e55c','Sam','Anzaroot','samanzaroot@gmail.com','718-207-2887','2008-08-28 15:54:50','0','');
-INSERT INTO `users` (`id`,`password`,`first`,`last`,`email`,`phone`,`created`,`admin`,`company`) 
-	VALUES ('3','c6b02634a05cc04ed831ecf653f1e0c4303764cf','Demo','Demo','demo@demo.com','','2008-08-28 19:56:10','1',NULL);
 
 # Taxes table
 DROP TABLE IF EXISTS `taxes`;
@@ -186,3 +189,33 @@ CREATE TABLE `taxes` (
 
 INSERT INTO `taxes` (`id`, `state`, `percent`)
 	VALUES (1, 'NY', '8.38');
+	
+# Coupons table
+DROP TABLE IF EXISTS `coupons`;
+CREATE TABLE `coupons` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`code` VARCHAR(50) NOT NULL,
+	`percent` VARCHAR(8) NULL,
+	`start` DATE default null,
+	`end` DATE default null,
+	`uses` INT(5) NULL,
+	`description` VARCHAR(225),
+	`over` VARCHAR(50),
+	PRIMARY KEY(`id`)
+);
+
+INSERT INTO `coupons` (`id`, `code`, `percent`, `start`, `end`, `uses`)
+	VALUES (1, '10PERCENT', '10', NOW(), NOW(), 1);
+	
+DROP TABLE IF EXISTS `coupons_categories`;
+CREATE TABLE `coupons_categories` (
+	`coupon_id` INT(11) UNSIGNED NOT NULL,
+	`category_id` INT(11) UNSIGNED NOT NULL,
+	FOREIGN KEY(`coupon_id`) REFERENCES coupons(`id`),
+	FOREIGN KEY(`category_id`) REFERENCES categories(`id`)
+);
+
+INSERT INTO `coupons_categories` (`coupon_id`, `category_id`) 
+	VALUES (1,1);
+INSERT INTO `coupons_categories` (`coupon_id`, `category_id`) 
+	VALUES (1,2);

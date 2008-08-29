@@ -32,6 +32,7 @@ a.newCategory { background:#F9FAFB url(../img/admin/folder_add.png) 5% 50% no-re
 a.newProduct { background:#F9FAFB url(../img/admin/newspaper_add.png) 5% 50% no-repeat; }
 a.newUser { background:#F9FAFB url(../img/admin/user_add.png) 5% 50% no-repeat; }
 a.newTax { background:#F9FAFB url(../img/admin/money_add.png) 5% 50% no-repeat; }
+a.addCoupon { background:#F9FAFB url(../img/admin/time_add.png) 5% 50% no-repeat; }
 
 .catName a { background:url(../img/admin/folder.png) 0% 50% no-repeat; padding-left:20px; display:block; }
 .prodMove a { background:url(../img/admin/newspaper_link.png) 0% 50% no-repeat; padding-left:20px; }
@@ -41,6 +42,8 @@ a.newTax { background:#F9FAFB url(../img/admin/money_add.png) 5% 50% no-repeat; 
 .ordEdit a { background:url(../img/admin/package_link.png) 0% 50% no-repeat; padding-left:20px; }
 .taxEdit a { background:url(../img/admin/money.png) 0% 50% no-repeat; padding-left:20px; }
 .taxDelete a { background:url(../img/admin/money_delete.png) 0% 50% no-repeat; padding-left:20px; }
+.couEdit a { background:url(../img/admin/time_go.png) 0% 50% no-repeat; padding-left:20px; }
+.couDelete a { background:url(../img/admin/time_delete.png) 0% 50% no-repeat; padding-left:20px; }
 
 #categories ul a, #categories ul strong  {
 	background:url(../img/admin/folder.png) 0% 50% no-repeat;
@@ -59,6 +62,9 @@ a.newTax { background:#F9FAFB url(../img/admin/money_add.png) 5% 50% no-repeat; 
 }
 #side_settings ul .tax_states a, #side_settings ul .tax_states strong  {
 	background:url(../img/admin/money_dollar.png) 0% 50% no-repeat;
+}
+#side_settings ul .coupon_codes a, #side_settings ul .coupon_codes strong  {
+	background:url(../img/admin/time.png) 0% 50% no-repeat;
 }
 
 .catEdit a { background:url(../img/admin/folder_edit.png) 0% 50% no-repeat; padding-left:20px; }

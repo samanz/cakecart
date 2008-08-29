@@ -16,7 +16,7 @@ class TaxesController extends AppController {
       } else {
          if($this->Tax->save($this->data)) {
             $this->Session->setFlash('Tax saved');
-            $this->redirect('/admin/settings/taxes');
+            $this->redirect('/admin/taxes');
          }
       }
    }
@@ -25,7 +25,7 @@ class TaxesController extends AppController {
       if(!empty($this->data)) {
          if($this->Tax->save($this->data)) {
             $this->Session->setFlash('Tax saved');
-            $this->redirect('/admin/settings/taxes');
+            $this->redirect('/admin/taxes');
          }
       }
    }
