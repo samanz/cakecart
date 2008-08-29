@@ -747,3 +747,4 @@
 2008-08-29 16:43:10 Notice: Notice (8): Undefined property:  User::$lastAdmin in [APP/controllers/users_controller.php, line 43]
 2008-08-29 16:43:10 Notice: Notice (8): Undefined variable: order in [APP/views/users/admin_remove.ctp, line 2]
 2008-08-29 16:43:31 Notice: Notice (8): Undefined variable: order in [APP/views/users/admin_remove.ctp, line 2]
+2008-08-29 17:08:37 Notice: Notice (8): Undefined property:  TaxesController::$Tax in [APP/controllers/taxes_controller.php, line 7]

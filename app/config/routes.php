@@ -36,6 +36,7 @@
 	Router::connect('/product/*', array('controller' => 'products', 'action' => 'show'));
 	Router::connect('/category/*', array('controller' => 'categories', 'action' => 'show'));
 	Router::connect('/admin/category/*', array('controller' => 'categories', 'action' => 'admin_show'));
+	Router::connect('/admin/settings', array('controller'=>'taxes','admin'=>1, 'action'=>'index'));
 	Router::connect('/admin', array('controller' => 'categories', 'action' => 'direct'));
 	Router::connect('/', array('controller' => 'products', 'action' => 'index', 'home'));
 /**

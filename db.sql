@@ -170,7 +170,19 @@ CREATE TABLE `users` (
 	 PRIMARY KEY (`id`)
 );
 
-INSERT INTO `users` (`id`, `password`, `first`, `last`, `email`, `phone`, `created`, `admin`)
-	VALUES(1, '4019e2d10a3c1de1c1838e44a1cf2cf0df3d3386', 'Sam', 'Anzaroot', 'sam@samanz.com', '718-207-2887', NOW(), '1');
-INSERT INTO `users` (`id`, `password`, `first`, `last`, `email`, `phone`, `created`, `admin`)
-	VALUES(2, '4019e2d10a3c1de1c1838e44a1cf2cf0df3d3386', 'Sam', 'Anzaroot', 'samanzaroot@gmail.com', '718-207-2887', NOW(), '0');
+INSERT INTO `users` (`id`,`password`,`first`,`last`,`email`,`phone`,`created`,`admin`,`company`) 
+	VALUES ('2','94f3b4c7165512a202327b6c698ee71162d5e55c','Sam','Anzaroot','samanzaroot@gmail.com','718-207-2887','2008-08-28 15:54:50','0','');
+INSERT INTO `users` (`id`,`password`,`first`,`last`,`email`,`phone`,`created`,`admin`,`company`) 
+	VALUES ('3','c6b02634a05cc04ed831ecf653f1e0c4303764cf','Demo','Demo','demo@demo.com','','2008-08-28 19:56:10','1',NULL);
+
+# Taxes table
+DROP TABLE IF EXISTS `taxes`;
+CREATE TABLE `taxes` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`state` VARCHAR(4) NOT NULL,
+	`percent` VARCHAR(8) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+INSERT INTO `taxes` (`id`, `state`, `percent`)
+	VALUES (1, 'NY', '8.38');
