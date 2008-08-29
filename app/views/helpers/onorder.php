@@ -2,6 +2,7 @@
 class OnorderHelper extends AppHelper {
    var $helpers = array('Html');
    function total($order) {
+      if(!isset($order['Order'])) $order['Order'] = $order;
       $total = 0.0;
       foreach($order['OrderItems'] as $item) {
         $total += $item['price'];

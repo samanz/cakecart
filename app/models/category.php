@@ -29,7 +29,7 @@ class Category extends AppModel
 			   array('hasMany' => array('SubCategory'))
 		   );
 	   }
-		$data = $this->findAll(null,null,"Category.parent_id ASC");
+		$data = $this->find('all');
 		
 		$rows = array();
 		foreach($data as $row) 

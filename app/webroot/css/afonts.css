@@ -1,18 +1,23 @@
 body { font-family: "helvetica neue", helvetica, arial, sans-serif; font-size:62.5%; }
-p { font-size:1.2em; } 
-
+p, dl { font-size:1.2em; }
+dt { font-weight:bold }
 a { color:#000; }
 a:hover { color:#333; }
 #header li a { font-size:1.1em; }
 
 #nav li a { font-size:1.57em; text-decoration:none; color:#000; }
 
-#second h2 { font-size:1.574em; text-transform:uppercase; color:#3f3f3f; letter-spacing:.15em; }
+#second h2 { font-size:1.574em; text-transform:uppercase; color:#3f3f3f; letter-spacing:.15em; padding:5px; }
 #second li a { font-size:1.311em; color:#010101; text-decoration:none; }
 #second li strong { font-size:1.311em; font-weight:bold; text-decoration:none; }
 #second li li a { text-align:left; }
-#content h2 { font-size:1.95em; }
-
+#content h2 { font-size:1.95em; padding: 5px 0; }
+#content h3 { font-size:1.75em; padding: 5px 0;}
 #content table td, #content table th { font-size:1.3em; }
 #content table th { font-weight:bold; font-size:1.6em; }
 a.button { color:#000; text-decoration:none; font-size:1.2em; }
+
+table tr.info td { font-weight:bold; }
+
+#second a.button { font-size:1.5em; }
+

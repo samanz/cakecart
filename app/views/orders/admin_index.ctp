@@ -1,3 +1,4 @@
+<?php echo $this->element('admin_viewing'); ?>
 <table>
    <tr>
       <th>Id</th>
@@ -13,13 +14,13 @@
    <?php foreach($orders as $order): ?>
    <tr <?php if($count % 2 == 1) echo ' class = "alt" '; ?>>
       <td><?php echo $order['Order']['id']; ?></td>
-      <td><?php echo $order['Order']['first']; ?></td>
-      <td><?php echo $order['Order']['last']; ?></td>
+      <td><?php echo $order['User']['first']; ?></td>
+      <td><?php echo $order['User']['last']; ?></td>
       <td>$<?php echo $onorder->total($order); ?></td>
       <td><?php echo $onorder->status($order); ?></td>
-      <td><?php echo $html->link('View', '/admin/orders/show/' . $order['Order']['id']); ?></td>
-      <td>Edit</td>
-      <td>Delete</td>
+      <td class = "ordView"><?php echo $html->link('View', '/admin/orders/show/' . $order['Order']['id']); ?></td>
+      <td class = "ordEdit"><?php echo $html->link('Edit', '/admin/orders/edit/' . $order['Order']['id']); ?></td>
+      <td class = "ordDel"><?php echo $html->link('Delete', '/admin/orders/remove/' . $order['Order']['id']); ?></td>
       <?php $count++ ?>
    </tr>
    <?php endforeach; ?>

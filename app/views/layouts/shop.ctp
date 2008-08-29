@@ -19,6 +19,9 @@
             <li><?php echo $html->link('Home', '/'); ?></li>
             <li><?php echo $html->link('Shopping Cart', '/carts'); ?></li>
             <li><?php echo $html->link('Checkout', '/checkout'); ?></li>
+            <?php if($this->params['user']): ?>
+            <li><?php echo $html->link('Sign Out', '/users/logout'); ?></li>
+            <?php endif; ?>
          </ul>
       </div>
       <div id = "secondary">

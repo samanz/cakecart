@@ -1,3 +1,4 @@
+legend { font-size:1.9em; text-transform:uppercase; letter-spacing:.3em; }
 label { display:block; }
 div.input { margin:10px 0; font-size:1.3em; }
 label { font-size:1.2em; }
@@ -7,12 +8,35 @@ textarea {
 	height:300px;
 }
 div.textarea { clear:both; }
+div.radio legend { display:block; font-size:1.3em }
+div.radio input { float:left; margin:10px; clear:left; }
+div.radio label { float:left; margin:10px; }
+
+/* Product */
 div.pounds { float:left; }
 div.ounces { float:left; margin:10px; }
 div.model { float:left; }
 div.name { float:left; margin:10px; }
 div.name input { width:430px; }
 div.price { clear:both; }
-div.radio legend { display:block; font-size:1.3em }
-div.radio input { float:left; margin:10px; clear:left; }
-div.radio label { float:left; margin:10px; }
+
+
+/* Order */
+#billing, #shipping, #shipping_method, #payment_method { height:250px; }
+#billing { float:left; width:300px; }
+#shipping { float:left; width:300px;  }
+#shipping_method { float:left; width:185px; }
+#payment_method { float:left; width:250px;}
+
+div.address input { width:270px; }
+div.city, div.state, div.zip { float:left; padding:0 4px 0 0; margin:0;}
+div.city input, div.state select, div.zip input { margin:3px 0; float:left; padding:0 4px 0 0;}
+div.city input { width:140px; }
+div.zip input { width:50px; }
+
+div.credit input { width:270px; }
+div.month { float:left; margin:0; padding:0 15px 0 0;}
+div.year { float:left; margin:0; }
+div.month select, div.year select { margin:3px 0; padding:0 4px 0 0;}
+div.cvv { clear:both; padding:10px 0; }
+div.submit { clear:both; }

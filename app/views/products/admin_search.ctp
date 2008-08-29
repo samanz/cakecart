@@ -1,4 +1,5 @@
-<h2>Search Results:</h2>
+<h2 id = "catName">Search Results:</h2>
+<?php echo $this->element('admin_search'); ?>
 <table>
    <tr>
       <th>ID</th>

@@ -4,6 +4,12 @@ class CheckoutController extends AppController {
    var $uses = array('Order', 'OrderItem');
    var $layout = 'shop';
    var $components = array('Session', 'Cartf', 'Shipping');
+   
+   function beforeFilter() {
+      $this->setUser();
+      $this->Auth->authError = 'Please Login to Checkout';
+   }
+   
    function index() {
       $cart = $this->Cartf->get();
       if(!isset($cart['CartItems'][0])) {
@@ -11,6 +17,7 @@ class CheckoutController extends AppController {
          $this->redirect('/');
       }
       if(!empty($this->data)) {
+         $this->data['Order']['user_id'] = $this->Auth->user('id');
          if($this->Order->save($this->data)) {
 				$order_id = $this->Order->getLastInsertId();
             $this->_populate($this->Order->getLastInsertId(), $cart);
@@ -41,8 +48,12 @@ class CheckoutController extends AppController {
 	function complete($id) {
 	   $this->Order->recursive = 2;
 	   $order = $this->Order->find(array('Order.id' => $id));
-	   $this->set('total', $this->orderTotal($order));
-	   $this->set('order', $order);
+	   if($order['Order']['user_id'] == $this->Auth->user('id')) {
+	      $this->set('total', $this->orderTotal($order));
+	      $this->set('order', $order);
+	   } else {
+	      $this->render('simple');
+	   }
 	}
 }
 ?>

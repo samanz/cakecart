@@ -9,7 +9,7 @@
 #nav li a { padding:8px 20px; display:block; }
 #nav li a:hover { background:#000; color:#fff; }
 
-#main { overflow:hidden; zoom:1; min-height:500px;}
+#main { overflow:hidden; zoom:1; min-height:800px;}
 
 #second { float:left; width:200px; padding:10px; }
 #second ul {
@@ -19,11 +19,18 @@
 	padding:2px 0 2px 19px;
 	display:block;
 }
-
+#second div { padding-bottom:15px; }
+#second form { overflow:hidden; zoom:1; padding:10px 0;}
+#second label { text-align:left; padding:4px 0;}
+#second div.input { padding:0; display:inline; margin:0 5px; text-align:left;}
+#second div.input select { width:130px; }
+#second div.submit { padding:0; display:inline;}
+#second a.button { float:none; }
 #content { padding:20px 50px; }
 #content.part { padding:10px; margin-left:230px; }
 #content table { width:100%; border-collapse:collapse; }
 #content table td, #content table th { padding:7px 8px; }
+#content table .info td, #content table td.price { text-align:right; }
 #footer { padding:8px 10px; margin-top:1px; }
 a.button { padding:8px 10px 8px 25px; display:block; float:left; margin:7px 0; }
 
@@ -36,3 +43,20 @@ a.button { padding:8px 10px 8px 25px; display:block; float:left; margin:7px 0; }
 form#search { width:40%; float:right; text-align:right; }
 form#search div { margin:0; }
 form#search div label { display:inline; }
+
+/* Order Page */
+#bill_to { float:left; width:49%; }
+#ship_to { float:right; width:49%; }
+#bill_to h3, #bill_to p, #ship_to h3, #ship_to p { padding:10px; }
+#bill_to p, #ship_to p { padding: 7px 10px; }
+#items { clear:both; margin-top:30px;}
+#items h3 { text-indent:-5000px; }
+dt {
+  display:inline; float:left; clear:left; margin: 3px 0 0 0;
+	width:115px; text-align:right; padding:10px;
+}
+dd { float:left; display:inline; padding:10px; }
+#user_details { padding:10px 0; clear:both; float:left; width:49%;}
+#payment { padding:10px 0; float:right; width:49%;}
+
+#user_orders { clear:both; }

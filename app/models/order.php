@@ -6,7 +6,8 @@ class Order extends AppModel {
       array('className' => 'OrderItem',
             'dependent' => true
       )
-   );   
+   );
+   var $belongsTo = array('User');
 }
 
 ?>

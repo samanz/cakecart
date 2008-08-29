@@ -4,6 +4,12 @@ class CartItemsController extends AppController {
    var $uses = array('CartItem', 'Product');
    var $components = array('Url', 'Session', 'Cartf');
    var $layout = 'shop';
+   
+	function beforeFilter() {
+	   $this->setUser();
+	   if(@$this->params['admin'] != 1)
+	      $this->Auth->allow('*');
+	}
 	
    function add() {
       $cart = $this->Cartf->start();

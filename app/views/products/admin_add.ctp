@@ -1,21 +1,32 @@
+<script type = "text/javascript" src = "<?php echo $html->url('/js/tiny_mce/tiny_mce.js'); ?>" ></script>
+<style>
+#content .mceEditor td {
+   padding:0;
+} 
+</style>
 <script type="text/javascript">
-//<![CDATA[
-	function move() {
-		try {
-			if(typeof(document.getElementById('editor1').EscapeUnicode) == 'undefined') {
-				throw "Error"
-			} else {
-				document.getElementById('editor1').EscapeUnicode = true;
-				document.getElementById('ProductDescription').value = document.getElementById('editor1').value;
-			}			
-		}
-		catch(er) {
-			document.getElementById('ProductDescription').value = document.getElementById('alternate1').value;
-		}
-	}
-//]]>
-</script>
+tinyMCE.init({
+	// General options
+	mode : "textareas",
+	theme : "advanced",
+	plugins : "table,save,advlink,preview,print,contextmenu",
+	theme_advanced_buttons1_add_before : "save,separator",
+	theme_advanced_buttons3_add_before : "tablecontrols,separator",
+	theme_advanced_toolbar_location : "top",
+	theme_advanced_toolbar_align : "left",
+	theme_advanced_statusbar_location : "bottom",
+	theme_advanced_resizing : true,
 
+	// Example content CSS (should be your site CSS)
+	content_css : "css/content.css",
+
+	// Drop lists for link/image/media/template dialogs
+	template_external_list_url : "lists/template_list.js",
+	external_link_list_url : "lists/link_list.js",
+	external_image_list_url : "lists/image_list.js",
+	media_external_list_url : "lists/media_list.js",
+
+});</script>
 <h2>Adding New Product in <?php echo implode(' -> ', $this->params['bread'])?></h2>
 <?php echo $form->create('Product', array('type' => 'file', 'action' => 'add/' . implode('/', $this->params['bread']), 'onsubmit' => 'move()')); ?>
 <?php echo $form->input('model', array('div' => 'input model')); ?>
@@ -25,13 +36,18 @@
 <?php echo $form->input('price', array('div' => 'input price')); ?>
 <?php echo $form->input('pounds', array('div'=>'input pounds')); ?>
 <?php echo $form->input('ounces', array('div'=>'input ounces')); ?>
-<object type="application/x-xstandard" id="editor1" width="100%" height="400">
-	<param name="Value" value="<?php echo htmlspecialchars($this->data['Product']['description'], ENT_COMPAT) ?>" />
-	<textarea name="alternate1" id="alternate1" cols="60" rows="15"><?php echo htmlspecialchars($this->data['Product']['description'], ENT_COMPAT) ?></textarea>
-</object>
-<?php echo $form->hidden('description'); ?>
+<?php echo $form->input('description'); ?>
 <?php echo $form->input('status', array('type'=>'radio', 'options' => array('0' => 'Not In Stock', '1' => 'In Stock', '2'=> 'Not Shown'))); ?>
 <?php echo $form->input('image_url', array('type'=>'file')); ?>
-
+<h2 id = "addditional">Additional Images</h2> 
 
 <?php echo $form->end('Add'); ?>
+<script type="text/javascript" charset="utf-8">
+   $("#addditional").manyform({
+    message : "Add Additional Images",
+    attrib : 'Image',
+    name : 'image',
+    max : 4,
+    form : '<div class = "input file"><label for = "image*num*">Additional Image #*num*:<\/label><input type = "file" name = "data[Image][*num*]" id = "image*num*" class = "required" /></div>'
+   });
+</script>

@@ -3,8 +3,18 @@ class CategoriesController extends AppController {
 	var $name = 'Categories';
 	var $layout = 'shop';
 	var $uses = array('Category', 'Product');
-	var $components = array('Url', 'Session', 'Image');
+	var $components = array('Url', 'Session', 'Imagef');
 	var $helpers = array('Url', 'Html');
+	function beforeFilter() {
+	   $this->setUser();
+	   $this->Auth->authError = 'Login to Access Administration';
+	   if(@$this->params['admin'] != 1)
+	      $this->Auth->allow('*');
+	}
+	
+	function direct() {
+	   $this->redirect('/admin/categories');
+	}
 	
 	function admin_index() {
 	   $this->layout = 'admin';

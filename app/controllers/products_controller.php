@@ -2,9 +2,15 @@
 class ProductsController extends AppController {
 	var $name = 'Products';
 	var $layout = 'shop';
-	var $components = array('Url', 'Session', 'Image');
+	var $components = array('Url', 'Session', 'Imagef');
 	var $helpers = array('Html', 'Url');
-	var $uses = array('Product', 'Category');
+	var $uses = array('Product', 'Category', 'Image');
+	
+	function beforeFilter() {
+	   $this->setUser();
+	   if(@$this->params['admin'] != 1)
+	      $this->Auth->allow('*');
+	}
 	
 	function index() {
 		$this->set('products', $this->Product->find('all'));
@@ -24,16 +30,38 @@ class ProductsController extends AppController {
 		list($id,$ids, $urls) = $this->Url->parents($this->params['pass']);
 		$this->params['bread'] = explode('/', $urls);
 	   if(!empty($this->data)) {
-         if($this->Image->check($this->data['Product']['image_url'])) {
-	         $this->data['Product']['image'] = $this->Image->save( $this->data['Product']['image_url'] );
+         if($this->Imagef->check($this->data['Product']['image_url'])) {
+	         $this->data['Product']['image'] = $this->Imagef->save( $this->data['Product']['image_url'] );
 	      }
 	      $this->data['Product']['category_id'] = $id;
 	      if($this->Product->save($this->data)) {
+	         $product_id = $this->Product->getLastInsertId();
+	         $this->_addImages($product_id, $this->data);
 	         $this->Session->setFlash('Product Added');
 	         $this->redirect('/admin/categories/show/' . $urls);
 	      }
 	      
 	   }
+	}
+	
+	function _addImages($product_id, $cdata) {
+	      if(@$cdata['Image']['1'] != '') {
+            foreach($cdata['Image'] as $image) {
+ 		   	   $data['Image']['image'] =  $this->Imagef->save($image);
+ 		   	   $data['Image']['product_id'] = $product_id;
+ 		   	   if(!$this->Image->save($data)) {
+ 		   		   die('Could not write data');
+ 		   	   }
+ 		   	   $this->Image->id = false;
+ 		   	}
+ 		   }
+	}
+	
+	function _removeImages($form) {
+	   foreach($form['delimage'] as $image) {
+			if($image['del'] == 1)
+				$this->Image->del($image['id']);
+		}
 	}
 	
 	function admin_edit($id = null) {
@@ -45,11 +73,13 @@ class ProductsController extends AppController {
 	      $this->Product->id = $id;
 	      $this->data = $this->Product->read();
 	   } else {
-	      #$this->debugger($this->data);
-	      if($this->Image->check($this->data['Product']['image_url'])) {
-	         $this->data['Product']['image'] = $this->Image->save($this->data['Product']['image_url']);	
+	      if($this->Imagef->check($this->data['Product']['image_url'])) {
+	         $this->data['Product']['image'] = $this->Imagef->save($this->data['Product']['image_url']);	
 	      }		
 	      if($this->Product->save($this->data)) {
+	         $product_id = $this->data['Product']['id'];
+	         $this->_removeImages($this->params['form']);
+	         $this->_addImages($product_id, $this->data);
 	         $this->Session->setFlash('Product Edited');
 	         $this->redirect('/admin/categories/show/' . implode('/', $url));
 	      }

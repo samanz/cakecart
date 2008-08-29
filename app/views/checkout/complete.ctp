@@ -33,7 +33,7 @@
 <div id = "address">
    <h3>Address</h3>
    <ul>
-      <li><?php echo $order['Order']['first']; ?> <?php echo $order['Order']['last']; ?></li>
+      <li><?php echo $order['User']['first']; ?> <?php echo $order['User']['last']; ?></li>
       <li><?php echo $order['Order']['address']; ?></li>
       <?php if($order['Order']['address2'] != ''): ?>
       <li><?php echo $order['Order']['address2']; ?></li>

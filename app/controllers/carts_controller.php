@@ -6,6 +6,12 @@ class CartsController extends AppController
    var $helpers = array('Html', 'Url');
    var $components = array('Url', 'Session', 'Cartf');
    
+   function beforeFilter() {
+	   $this->setUser();
+	   if(@$this->params['admin'] != 1)
+	      $this->Auth->allow('*');
+	}
+	
    function index()
    {
       $cart = $this->Cartf->get();

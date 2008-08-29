@@ -7,6 +7,8 @@
          CakeCart Administration Interface
       </title>
       <?php echo $html->css('admin'); ?>
+      <script type="text/javascript" src="<?php echo $html->url('/js/jquery-1.2.3.min.js'); ?>"></script>
+      <script type="text/javascript" src="<?php echo $html->url('/js/jquery.manyform.min.js'); ?>"></script>
    </head>
    <body<?php if(isset($current)) echo ' id = "' . $current . '" '; ?>>
       <div id = "wrapper">
@@ -14,7 +16,7 @@
             <a href = "<?php echo $html->url('/admin'); ?>"><?php echo $html->image('admin/logo.gif'); ?></a>
             <ul>
                <li><?php echo $html->link('View Site', '/', array('id' => 'view')); ?></li>
-               <li><?php echo $html->link('Sign Out', '/admin/logout', array('id' => 'signout')); ?></li>
+               <li><?php echo $html->link('Sign Out', '/admin/users/logout', array('id' => 'signout')); ?></li>
             </ul>
          </div>
          <ul id = "nav">

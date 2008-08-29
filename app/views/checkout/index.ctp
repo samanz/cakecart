@@ -1,14 +1,20 @@
 <h2>Checkout</h2>
 <?php echo $form->create('Order', array('url' => '/checkout/index')); ?>
    <fieldset>
-      <legend>Address</legend>
-      <?php echo $form->input('first'); ?>
-      <?php echo $form->input('last'); ?>
+      <legend>Shipping Address</legend>
       <?php echo $form->input('address'); ?>
       <?php echo $form->input('address2'); ?>
       <?php echo $form->input('city'); ?>
       <?php echo $form->input('state'); ?>
       <?php echo $form->input('zip'); ?>
+   </fieldset>
+   <fieldset>
+      <legend>Billing Address</legend>
+      <?php echo $form->input('bill_address'); ?>
+      <?php echo $form->input('bill_address2'); ?>
+      <?php echo $form->input('bill_city'); ?>
+      <?php echo $form->input('bill_state'); ?>
+      <?php echo $form->input('bill_zip'); ?>
    </fieldset>
    <fieldset>
       <legend>Shipping Options</legend>

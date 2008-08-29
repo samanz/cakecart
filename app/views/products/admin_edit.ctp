@@ -40,6 +40,35 @@ tinyMCE.init({
 <?php echo $form->input('description'); ?>
 <?php echo $form->input('status', array('type'=>'radio', 'options' => array('0' => 'Not In Stock', '1' => 'In Stock', '2'=> 'Not Shown'))); ?>
 <?php echo $form->input('image_url', array('type'=>'file')); ?>
+	<h2>Additional Images</h2>
+	<?php if(isset($this->data['Images'][0]['id'])):
+	         $length = sizeof($this->data['Images']) - 1;
+	         foreach($this->data['Images'] as $key => $image):
+?>
+   <fieldset>
+      <legend>Additional Image <?php echo ($key+1); ?></legend>
+      <p>
+         <input type = "hidden" name = "delimage[<?php echo $key; ?>][id]; ?>" value = "<?php echo $image['id']; ?>" />
+         <label>Current Image:</label>
+         <img src = "<?php echo $html->url('/img/products/' . $image['image']); ?>" alt = ""  height = "100" />   </p>
+      <p>
+         <label for = "delete<?php echo $key; ?>">Delete?</label>
+         <input type = "hidden" name = "delimage[<?php echo $key; ?>][del]" value = "0" />
+         <input type = "checkbox" name = "delimage[<?php echo $key; ?>][del]" value = "1"  id = "delete<?php echo $key; ?>"/>
+   	</p>
+   </fieldset>	
+	<?php    endforeach;
+	      endif; ?>
+	<h2 id = "addditional">Additional Images</h2> 
 
 
 <?php echo $form->end('Save'); ?>
+<script type="text/javascript" charset="utf-8">
+   $("#addditional").manyform({
+    message : "Add Additional Images",
+    attrib : 'Image',
+    name : 'image',
+    max : 4,
+    form : '<div class = "input file"><label for = "image*num*">Additional Image #*num*:<\/label><input type = "file" name = "data[Image][*num*]" id = "image*num*" class = "required" /></div>'
+   });
+</script>
