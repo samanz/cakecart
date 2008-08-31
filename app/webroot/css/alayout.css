@@ -1,15 +1,16 @@
+#wrapper {  min-height: 100%; position:absolute; width:100%; }
 #header { overflow:hidden; zoom:1; padding:10px; }
 #header a { float:left; }
 #header ul { float:right; display:inline; }
 #header li { display:inline; }
 #header li a { padding:19px 20px 19px 20px; color:#fff; }
 
-#nav { margin: 1px 0; overflow:hidden; zoom:1; padding-left:55px; }
+#nav { border: 1px solid #fff; border-left:0; border-right:0; overflow:hidden; zoom:1; padding-left:55px; }
 #nav li { display:inline; float:left; }
 #nav li a { padding:8px 20px; display:block; }
 #nav li a:hover { background:#000; color:#fff; }
 
-#main { overflow:hidden; zoom:1; min-height:800px;}
+#main { overflow:hidden; zoom:1;}
 
 #second { float:left; width:200px; padding:10px; }
 #second ul {
@@ -26,12 +27,15 @@
 #second div.input select { width:130px; }
 #second div.submit { padding:0; display:inline;}
 #second a.button { float:none; }
-#content { padding:20px 50px; }
-#content.part { padding:10px; margin-left:230px; }
+#content { padding:20px 50px 50px; overflow:hidden; }
+#content.part { padding:10px 10px 50px; margin-left:230px; }
 #content table { width:100%; border-collapse:collapse; }
 #content table td, #content table th { padding:7px 8px; }
 #content table .info td, #content table td.price { text-align:right; }
-#footer { padding:8px 10px; margin-top:1px; }
+#footer { 
+	position:absolute;
+	bottom:0; left:0; right:0;
+	padding:8px 10px; margin-top:1px; }
 a.button { padding:8px 10px 8px 25px; display:block; float:left; margin:7px 0; }
 
 /* Empty Page */

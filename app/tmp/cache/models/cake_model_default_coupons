@@ -1,2 +1,2 @@
-1220052275
+1306448450
 a:8:{s:2:"id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:3:"key";s:7:"primary";}s:4:"code";a:4:{s:4:"type";s:6:"string";s:4:"null";b:0;s:7:"default";s:0:"";s:6:"length";i:50;}s:7:"percent";a:4:{s:4:"type";s:6:"string";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:8;}s:5:"start";a:4:{s:4:"type";s:4:"date";s:4:"null";b:1;s:7:"default";N;s:6:"length";N;}s:3:"end";a:4:{s:4:"type";s:4:"date";s:4:"null";b:1;s:7:"default";N;s:6:"length";N;}s:4:"uses";a:4:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:5;}s:11:"description";a:4:{s:4:"type";s:6:"string";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:225;}s:4:"over";a:4:{s:4:"type";s:6:"string";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:50;}}

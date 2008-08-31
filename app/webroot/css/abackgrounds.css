@@ -16,12 +16,12 @@ a#signout { background: url(../img/admin/user_go.png) 0% 50% no-repeat; }
 	#settings #Settings:hover { 
 		background:#555; 
 }
-#main.part { background:url(../img/admin/main-bk.gif) top left repeat-y;}
+body.part { background:url(../img/admin/main-bk.gif) top left repeat-y;}
 
 #content tr.alt { background:#eee; border:1px solid #ccc; border-left:0; border-right:0; }
 #content tr:hover td { background:#F8FFD4; }
 #content th { background:#FBF2BD; border-bottom:1px solid #000; }
-#footer { background:#d6d6d6; }
+#footer { background:#d6d6d6; border-top:1px solid #fff; }
 a.button { 
 	background:#F9FAFB; 
 	border:1px solid #ddd; 

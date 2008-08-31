@@ -12,7 +12,7 @@
       <script type="text/javascript" src="<?php echo $html->url('/js/jquery.datePicker.js'); ?>"></script>
       
    </head>
-   <body<?php if(isset($current)) echo ' id = "' . $current . '" '; ?>>
+   <body<?php if(isset($current)) echo ' id = "' . $current . '" '; ?><?php if(isset($sidebar)) echo ' class = "part" '?>>
       <div id = "wrapper">
          <div id="header">
             <a href = "<?php echo $html->url('/admin'); ?>"><?php echo $html->image('admin/logo.gif'); ?></a>

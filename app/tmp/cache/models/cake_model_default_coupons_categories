@@ -1,2 +1,2 @@
-1220052275
+1306448450
 a:2:{s:9:"coupon_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";s:0:"";s:6:"length";i:11;s:3:"key";s:5:"index";}s:11:"category_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";s:0:"";s:6:"length";i:11;s:3:"key";s:5:"index";}}
