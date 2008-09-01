@@ -5,7 +5,7 @@ class CouponsController extends AppController {
    function admin_index() {
       $this->set('current', 'settings');
       $this->set('sidebar', array('admin_settings'));
-      $coupons = $this->Coupon->find('all');
+      $coupons = $this->Coupon->findAllWithCurrent();
       $this->set('coupons', $coupons);
    }
    function admin_edit($id = null) {

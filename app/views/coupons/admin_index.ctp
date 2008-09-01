@@ -8,9 +8,9 @@
 		<th>Delete</th>
 	</tr>	
 <?php 
-$alt = '';
+$count = 0;
 foreach($coupons as $coupon): ?>
-   <tr<?php echo $alt; ?>>
+   <tr<?php if($count % 2 == 1) echo ' class = "alt" ';?>>
       <td>
          <?php echo $coupon['Coupon']['code'];?>
       </td>
@@ -18,14 +18,7 @@ foreach($coupons as $coupon): ?>
          <?php echo $coupon['Coupon']['description']; ?>
       </td>
       <td>
-         <?php
-         $today = strtotime("now");
-         $end = strtotime($coupon['Coupon']['end']);
-         $start = strtotime($coupon['Coupon']['start']);
-         $current = 'No';
-         if ($end > $today && $today > $start) $current = "Yes";
-         echo $current;
-         ?>
+         <?php if($coupon['Coupon']['current']):?>Current<?php else: ?>Expired<?php endif; ?>
       </td>
       <td class = "couEdit">
          <?php echo $html->link('Edit','/admin/coupons/edit/' . $coupon['Coupon']['id']); ?>
@@ -35,7 +28,7 @@ foreach($coupons as $coupon): ?>
       </td>
    </tr>
 <?php
-if($alt == '') { $alt = ' class = "alt" '; } else { $alt = ''; }
+$count++;
 endforeach;
 ?>
 </table>
