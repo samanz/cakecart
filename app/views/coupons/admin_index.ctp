@@ -30,7 +30,7 @@ foreach($coupons as $coupon): ?>
       <td class = "couEdit">
          <?php echo $html->link('Edit','/admin/coupons/edit/' . $coupon['Coupon']['id']); ?>
       </td>
-      <td>
+      <td class = "couDelete">
          <?php echo $html->link('Delete','/admin/coupons/remove/' . $coupon['Coupon']['id']); ?>
       </td>
    </tr>

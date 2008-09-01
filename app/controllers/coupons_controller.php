@@ -40,7 +40,7 @@ class CouponsController extends AppController {
    function admin_remove($id) {
       $this->set('current', 'settings');
       if(!isset($_POST['sent'])) {
-         $tax = $this->Coupon->find(array('Coupon.id' => $id));
+         $coupon = $this->Coupon->find(array('Coupon.id' => $id));
          $this->set('coupon', $coupon);
       } else {
          $this->Coupon->del($id);
