@@ -17,7 +17,7 @@ class CartItemsController extends AppController {
       $id = $this->_check($cart, $product_id);
       if($id > 0)
          $this->data['CartItem']['id'] = $id;
-      $product = $this->Product->find(array('product.id' => $product_id));
+      $product = $this->Product->find(array('Product.id' => $product_id));
       $this->data['CartItem']['quantity'] += $this->_quantity($cart, $product_id);
       $this->data['CartItem']['price'] = $product['Product']['price'];
       $this->data['CartItem']['cart_id'] = $cart['Cart']['id'];
