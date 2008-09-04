@@ -93,11 +93,9 @@ class SearchableBehavior extends ModelBehavior {
 		pr($ids_3);
 		*/
 
-		$items_1 = $model->findAllbyId($ids_1);
-
-		$items_2 = $model->findAllbyId($ids_2);
-
-		$items_3 = $model->findAllbyId($ids_3);
+		$items_1 = $model->find('all', array('conditions' => array($model->name .'.id' => $ids_1)));
+		$items_2 = $model->find('all', array('conditions' => array($model->name .'.id' => $ids_2)));
+		$items_3 = $model->find('all', array('conditions' => array($model->name .'.id' => $ids_3)));
 
 		// merge final items in order of their relevancy
 		$items = am($items_1, $items_2, $items_3);
