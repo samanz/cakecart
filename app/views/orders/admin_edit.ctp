@@ -33,9 +33,9 @@
    <legend>Shipping</legend>
 <?php
    echo $form->input('shipping_method' , array('options' => array(
-      '0' => 'Ground',
-      '1' => 'Third Day Select',
-      '2' => 'First Class'
+      'Ground' => 'Ground',
+      'Third Day' => 'Third Day Select',
+      'First Class' => 'First Class'
       )));
    echo $form->input('shipping');
 ?>

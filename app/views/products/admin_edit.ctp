@@ -24,7 +24,7 @@ tinyMCE.init({
 	template_external_list_url : "lists/template_list.js",
 	external_link_list_url : "lists/link_list.js",
 	external_image_list_url : "lists/image_list.js",
-	media_external_list_url : "lists/media_list.js",
+	media_external_list_url : "lists/media_list.js"
 
 });</script>
 <h2>Editing <?php echo $this->data['Product']['name']; ?></h2>

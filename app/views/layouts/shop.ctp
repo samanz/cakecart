@@ -7,7 +7,22 @@
          <?php echo Configure::read('Company.name'); ?> - <?php echo Configure::read('Company.slogan'); ?> - <?php echo $title_for_layout?>
       </title>
       <?php echo $scripts_for_layout ?>
-      <?php echo $html->css('main'); ?>   
+      <?php echo $html->css('main'); ?>
+      <!--[if lt IE 8]>
+         <style type="text/css">
+            #secondary li a {display:inline-block;}
+            #secondary li a {display:block;}
+            #secondary li strong {display:inline-block;}
+            #secondary li strong {display:block;}
+         </style>
+      <![endif]-->
+      <!--[if lt IE 7]>
+         <style type="text/css">
+            body { width:866px; }
+            #categories h2 { padding-top:20px; }
+         </style>
+      <![endif]-->
+      
    </head>
    <body id="shop">
       <?php $session->flash(); ?>

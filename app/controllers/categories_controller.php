@@ -5,6 +5,7 @@ class CategoriesController extends AppController {
 	var $uses = array('Category', 'Product');
 	var $components = array('Url', 'Session', 'Imagef');
 	var $helpers = array('Url', 'Html');
+	
 	function beforeFilter() {
 	   $this->setUser();
 	   $this->Auth->authError = 'Login to Access Administration';

@@ -1,3 +1,4 @@
+<div id = "brand">
 <div id = "company_details">
 	<?php #echo $html->image('logobw.gif'); ?>
 	<h1><?php echo Configure::read('Company.name'); ?></h1>
@@ -17,6 +18,7 @@
 			<span>Invoice #</span> <span class = "detail"><?php echo $order['Order']['id']; ?></span>
 		</p>
 	</div>
+</div>
 </div>
 <div id = "bill_to">
    <h3>Billing Address</h3>

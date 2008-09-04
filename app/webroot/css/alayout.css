@@ -1,4 +1,7 @@
-#wrapper {  min-height: 100%; position:absolute; width:100%; }
+body, html { height:100%; min-width:500px; }
+#wrapper {  min-height: 100%;  margin-bottom:-25px; }
+* html #wrapper{height:100%;}
+#clearfooter{clear:both;height:25px;}
 #header { overflow:hidden; zoom:1; padding:10px; }
 #header a { float:left; }
 #header ul { float:right; display:inline; }
@@ -12,30 +15,47 @@
 
 #main { overflow:hidden; zoom:1;}
 
-#second { float:left; width:200px; padding:10px; }
+#main.part { padding-left:230px; }
+
+#content.part { padding:0; float:left; width:100%; }
+
+#content.part .padding { padding:10px; }
+
+#second { float:left; position:relative; width:220px; right:230px; margin-left:-100%;}
+
+* html #second { margin-left:-100%; right:-1px;}
 #second ul {
 	margin:2px 15px;
 }
+
 #second ul a, #second ul strong {
 	padding:2px 0 2px 19px;
 	display:block;
 }
-#second div { padding-bottom:15px; }
+
+#second { zoom:1; }
+#second div { padding:15px 10px; }
 #second form { overflow:hidden; zoom:1; padding:10px 0;}
 #second label { text-align:left; padding:4px 0;}
+
 #second div.input { padding:0; display:inline; margin:0 5px; text-align:left;}
 #second div.input select { width:130px; }
 #second div.submit { padding:0; display:inline;}
 #second a.button { float:none; }
+
 #content { padding:20px 50px 50px; overflow:hidden; }
-#content.part { padding:10px 10px 50px; margin-left:230px; }
-#content table { width:100%; border-collapse:collapse; }
+#content table { width:100%; border-collapse:collapse;  clear:both;}
 #content table td, #content table th { padding:7px 8px; }
 #content table .info td, #content table td.price { text-align:right; }
-#footer { 
-	position:absolute;
-	bottom:0; left:0; right:0;
-	padding:8px 10px; margin-top:1px; }
+
+#footer {
+	width:100%; clear:both; height:25px;
+}
+	
+#footer p {
+	margin:8px;
+}
+
 a.button { padding:8px 10px 8px 25px; display:block; float:left; margin:7px 0; }
 
 /* Empty Page */
@@ -55,11 +75,13 @@ form#search div label { display:inline; }
 #bill_to p, #ship_to p { padding: 7px 10px; }
 #items { clear:both; margin-top:30px;}
 #items h3 { text-indent:-5000px; }
+
 dt {
-  display:inline; float:left; clear:left; margin: 3px 0 0 0;
-	width:115px; text-align:right; padding:10px;
+  float:left; clear:left; margin: 3px 0 0 0;
+	width:25%; text-align:right; padding:10px;
 }
-dd { float:left; display:inline; padding:10px; }
+dd { float:right; clear:right; text-align:left; width:50%; padding:10px; margin:3px 0 0 0; }
+
 #user_details { padding:10px 0; clear:both; float:left; width:49%;}
 #payment { padding:10px 0; float:right; width:49%;}
 

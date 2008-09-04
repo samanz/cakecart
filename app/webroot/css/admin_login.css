@@ -85,16 +85,17 @@
 		font-size:1.3em;
 		width:80px;
 		text-align:right;
-		padding:6px 10px;
+		padding:10px;
 	}
 	.submit input {
 		clear:both;
 		width:auto;
 	}
-	input[type=text], textarea[id=ProductDescription], input[type=file] {
+	input[type=text], input[type=password], textarea[id=ProductDescription], input[type=file] {
 		border:0;
 		border:1px solid #999;
 	}
+	form { padding:25px 0;}
 	textarea {
 		width:600px;
 		height:300px;
@@ -114,3 +115,4 @@
 		padding:3px 3px 3px 100px;
 		font-size:1.3em;
 	}
+	div#login { overflow:hidden; }

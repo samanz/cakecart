@@ -390,7 +390,7 @@ table.cake-sql-log { display:none; }
 		border:1px solid #888;
 		height:120px;
 		float:right;
-		width:49%;
+		width:48%;
 	}
 	#ship_to h3, #bill_to h3 {
 		border-bottom:1px solid #888;
@@ -432,3 +432,5 @@ table.cake-sql-log { display:none; }
 	}
 	#items .info, #items .price { text-align:right; }
 	#items .info { font-weight:bold; }
+
+	#brand { overflow:hidden; zoom:1;}

@@ -8,9 +8,12 @@ textarea {
 	height:300px;
 }
 div.textarea { clear:both; }
+div.radio { width:300px;}
 div.radio legend { display:block; font-size:1.3em }
-div.radio input { float:left; margin:10px; clear:left; }
-div.radio label { float:left; margin:10px; }
+div.radio input { float:left; margin:10px; clear:left; padding:0; }
+div.radio label { float:right; padding:8px; clear:right; width:240px; }
+
+* html div.radio label { float:right; padding:12px; clear:right; width:280px; }
 
 /* Product */
 div.pounds { float:left; }
