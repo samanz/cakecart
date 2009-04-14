@@ -1,3 +1,14 @@
-CakeCart is a shopping cart built on-top of the cakePHP framework. 
+CakeCart is a shopping cart built on-top of the cakePHP framework. Currently in the pre-pre-alpha stage.
 
-The cart is currently at the early stage of development. The plan is to get a completely useable version ready in about a month and a half. 
+Its purpose will be to allow anybody familiar with the cakePHP framework to customize and easily launch an e-commerce website.
+
+Currently has authorize.net support and later scheduled to add in paypal and google checkout support.
+
+To install:
+
+   Import db.sql into desired database.
+   Change app/config/database.php
+   Configure app/config/cart.php
+   Configure authorize.net at app/config/authorize.php
+   
+   Access admin in /admin url and use username: demo@demo.com and password: demo

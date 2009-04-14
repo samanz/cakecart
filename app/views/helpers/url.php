@@ -41,6 +41,24 @@ class UrlHelper extends Helper
 		 else
 		  return $this->Html->url('/category/' . $cat  );
 	}
+	function admin_catlink($cat, $options = "", $name = true) {
+	   $out = '<a href = "';
+	   $out .= $this->Html->url('/admin/categories/show/' . $cat['Category']['url']);
+	   $out .= '" ' . $options . '>';
+	   if($name) $out .= $cat['Category']['name'];
+	   else $out .= 'edit';
+	   $out .= "</a>";
+	   return $out;
+	}
+	function catlink($cat, $options = "", $name = true) {
+	   $out = '<a href = "';
+	   $out .= $this->Html->url('/category/' . $cat['Category']['url']);
+	   $out .= '" ' . $options . '>';
+	   if($name) $out .= $cat['Category']['name'];
+	   else $out .= 'edit';
+	   $out .= "</a>";
+	   return $out;
+	}
 	function admin_cat($cat, $par = '') {
 		 $cat = Inflector::slug($cat);
 		 if($par != '')

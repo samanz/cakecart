@@ -2,6 +2,7 @@
 class OrdersController extends AppController {
    var $name = 'Orders';
    var $helpers = array('Onorder');
+   var $components = array('AuthorizeNet'); 
    
    function beforeFilter() {
 	   $this->setUser();
@@ -17,6 +18,27 @@ class OrdersController extends AppController {
       $this->set('sidebar', array('admin_orders'));
       if(!isset($orders[0]))
          $this->render('admin_empty');
+   }
+   function admin_chargeCard($id) {
+      $order = $this->Order->find(array('Order.id' => $id));
+      debug($order);
+      $billinginfo = array("fname" => $order['User']['first'],
+                          "lname" => $order['User']['last'],
+                          "address" => $order['Order']['bill_address'],
+                          "city" => $order['Order']['bill_city'],
+                          "state" => $order['Order']['bill_state'],
+                          "zip" => $order['Order']['bill_zip'],
+                          "country" => "USA");
+  
+      $shippinginfo = array("fname" => $order['User']['first'],
+                          "lname" => $order['User']['last'],
+                          "address" => $order['Order']['bill_address'],
+                          "city" => $order['Order']['bill_city'],
+                          "state" => $order['Order']['bill_state'],
+                          "zip" => $order['Order']['bill_zip'],
+                          "country" => "USA");
+  
+      $response = $this->AuthorizeNet->chargeCard(Configure::read('Authorize.login');, Configure::read('Authorize.pass');, '4111111111111111', '01', '2009', '123', false, 110, 5, 5, "Purchase of Goods", $billinginfo, "email@email.com", "555-555-5555", $shippinginfo);
    }
    function admin_invoice($id) {
       $this->layout = 'invoice';

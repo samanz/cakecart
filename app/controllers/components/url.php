@@ -25,6 +25,31 @@ class UrlComponent extends Object {
 		$parents = $this->getParents($category);
 		return $parents;
 	}
+	function slug($urls) {
+	   $s = '';
+	   foreach($urls as $index => $url) {
+	      $t = Inflector::slug($url);
+	      if($index != 0) $t .= '/';
+	      $s = $t . $s; 
+	   }
+	   return $s;
+	}
+	function getCategoryUrl($id, $urls = array()) {
+	   $category = ClassRegistry::init('Category');
+	   $current = $category->find(array('Category.id' => $id));
+	   $urls[] = $current['Category']['name'];
+	   if($current['Category']['parent_id'] == 0)
+	      return $this->slug($urls);
+	   else return $this->getCategoryUrl($current['Category']['parent_id'], $urls);
+	}
+	function getCategoryIds($id, $ids = array()) {
+	   $category = ClassRegistry::init('Category');
+	   $current = $category->find(array('Category.id' => $id));
+	   $ids[] = $current['Category']['id'];
+	   if($current['Category']['parent_id'] == 0)
+	      return $this->slug($ids);
+	   else return $this->getCategoryIds($current['Category']['parent_id'], $ids);
+	}
 	function getParents($id, $ids = array(), $url = array()) {
 	  if($id == 0) { return ""; }
 		$category = ClassRegistry::init('Category');

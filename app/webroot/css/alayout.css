@@ -86,3 +86,5 @@ dd { float:right; clear:right; text-align:left; width:50%; padding:10px; margin:
 #payment { padding:10px 0; float:right; width:49%;}
 
 #user_orders { clear:both; }
+
+#content .mceEditor td { padding:0; } 

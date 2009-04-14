@@ -1,3 +1,4 @@
 .DS_Store
 *.DS_Store
 app/config/database.php
+app/config/authorize.php

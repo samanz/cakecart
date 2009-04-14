@@ -5,4 +5,11 @@ class Product extends AppModel {
 	var $belongsTo = array( 'Category' => array('className' => 'Category') );
 	var $actsAs = array('Searchable' => array());
 	var $hasMany = array('Images' => array('className' => 'Image'));
+	var $hasAndBelongsToMany = array('Options' =>
+		                              array('className'    => 'Option',
+		                                    'joinTable'    => 'products_options',
+		                                    'foreignKey'   => 'product_id',
+		                                    'associationForeignKey' => 'option_id'
+		                              )
+		                           );
 }

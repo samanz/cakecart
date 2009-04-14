@@ -67,10 +67,12 @@ class ProductsController extends AppController {
 	function admin_edit($id = null) {
 	   $this->layout = 'admin';
 	   $this->set('current', 'catalog');
+	   $this->set('sidebar', array('admin_product'));
 	   list($ids, $url) = $this->Url->getUrl($id);
 	   $url = array_reverse($url);
 	   if(empty($this->data)) {
 	      $this->Product->id = $id;
+	      $this->Product->recursive = 2;
 	      $this->data = $this->Product->read();
 	   } else {
 	      if($this->Imagef->check($this->data['Product']['image_url'])) {

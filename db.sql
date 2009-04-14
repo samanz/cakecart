@@ -9,26 +9,29 @@ CREATE TABLE `categories` (
 	`parent_id` INT(11) UNSIGNED default '0',
 	`order` INT(3) default '0',
 	`image` VARCHAR(50) NULL default NULL,
+	`ids`		VARCHAR(225) NULL default NULL,
+	`url`		VARCHAR(255) NULL default NULL,
 	PRIMARY KEY  (`id`),
-  FOREIGN KEY (`parent_id`) REFERENCES categories(`id`)
+  FOREIGN KEY (`parent_id`) REFERENCES categories(`id`),
+	UNIQUE KEY `url` (`url`)
 );
 
 # Category test data 
 
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`)
-	VALUES (1, 'Telescopes', 0, 'telescope.jpg', 0);
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`)
-	VALUES (2, 'Binoculars', 0 , 'binos.jpg', 1);
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`)
-	VALUES (3, 'Accessories', 0, 'access.jpg', 2);
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`)
-	VALUES (4, 'Reflecting', 1, 'access.jpg', 2);
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`)
-	VALUES (5, 'Lenses', 3, 'lens.jpg', 1);
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`)
-	VALUES (6, 'Celestron', 5, 'celestron.jpg', 1);
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`)
-	VALUES (7, 'Refracting', 1, 'refract.jpg', 1);
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
+	VALUES (1, 'Telescopes', 0, 'telescope.jpg', 0, 'Telescopes');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
+	VALUES (2, 'Binoculars', 0 , 'binos.jpg', 1, 'Binoculars');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
+	VALUES (3, 'Accessories', 0, 'access.jpg', 2, 'Accessories');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
+	VALUES (4, 'Reflecting', 1, 'access.jpg', 2, 'Telescopes/Reflecting');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
+	VALUES (5, 'Lenses', 3, 'lens.jpg', 1, 'Accessories/Lenses');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
+	VALUES (6, 'Celestron', 5, 'celestron.jpg', 1, 'Accessories/Lenses/Celestron');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
+	VALUES (7, 'Refracting', 1, 'refract.jpg', 1, 'Telescopes/Refracting');
 
 # Products table
 
@@ -219,3 +222,46 @@ INSERT INTO `coupons_categories` (`coupon_id`, `category_id`)
 	VALUES (1,1);
 INSERT INTO `coupons_categories` (`coupon_id`, `category_id`) 
 	VALUES (1,2);
+	
+# Options table
+DROP TABLE IF EXISTS `options`;
+CREATE TABLE `options` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL,
+	`type` VARCHAR(50) NOT NULL,
+	`identifier` VARCHAR(50) NOT NULL,
+	PRIMARY KEY(`id`)
+);
+
+DROP TABLE IF EXISTS `option_details`;
+CREATE TABLE `option_details` (
+	`id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`option_id` INT(11) NOT NULL,
+	`name` VARCHAR(50) NOT NULL,
+	`price` VARCHAR(30) NOT NULL,
+	`weight` VARCHAR(10) NOT NULL,
+	`order` INT(3),
+	PRIMARY KEY (`id`),
+	FOREIGN KEY(`option_id`) REFERENCES options(`id`)
+);
+
+DROP TABLE IF EXISTS `products_options`;
+CREATE TABLE `products_options` (
+	`option_id` INT(11) NOT NULL,
+	`product_id` INT(11) NOT NULL,
+	FOREIGN KEY(`option_id`) REFERENCES options(`id`),
+	FOREIGN KEY(`product_id`) REFERENCES products(`id`)
+);
+
+INSERT INTO `options` (`id`, `name`, `type`, `identifier`)
+	VALUES (1, 'size', 'dropdown', 'size');
+
+INSERT INTO `option_details` (`id`, `option_id`, `name`, `price`, `weight`, `order`)
+	VALUES (1, 1, 'Large', '20.00', '3', 1);
+INSERT INTO `option_details` (`id`, `option_id`, `name`, `price`, `weight`, `order`)
+	VALUES (2, 1, 'Medium', '15.00', '3', 2);
+INSERT INTO `option_details` (`id`, `option_id`, `name`, `price`, `weight`, `order`)
+	VALUES (3, 1, 'Small', '10.00', '3', 3);
+	
+INSERT INTO `products_options` (`option_id`, `product_id`)
+	VALUES(1, 7);

@@ -7,26 +7,30 @@
          <?php if(!empty($ids) && $category['Category']['id'] == $ids[count($ids)-1]): ?>
             <li><strong><?php echo $category['Category']['name']; ?></strong>
          <?php else: ?>
-            <li><?php echo $url->cat_link($category['Category']['name']); ?>
+            <li><?php echo $url->catlink($category); ?>
          <?php endif; ?>
             <?php if(in_array($category['Category']['id'], $ids) &&  isset($category['SubCategory'])): ?>
-               <?php echo showLevel($category['SubCategory'], Inflector::slug($category['Category']['name']), $url, $ids ); ?>
+               <?php echo showLevel($category['SubCategory'], $url, $ids ); ?>
             <?php endif; ?>
             </li>
       <?php endforeach; ?>
    </ul>
    <?php   
-      function showLevel($cats, $pars, $url, $ids) {
+      function showLevel($cats, $url, $ids) {
          $form = '<ul>';
-         foreach($cats as $cat):
+         $count = 0;
+         foreach($cats as $key => $cat):
+            $class = '';
+            if($count == count($cats)-1) $class = ' class = "last" ';
             if($cat['Category']['id'] == $ids[count($ids)-1]):
-               $form .= '<li><strong>' . $cat['Category']['name'] . '</strong>';
+               $form .= '<li' . $class .'><strong>' . $cat['Category']['name'] . '</strong>';
             else:
-               $form .= '<li>' .  $url->cat_link($cat['Category']['name'], $pars);
+               $form .= '<li' . $class . '>' .  $url->catlink($cat);
             endif;
             if(in_array($cat['Category']['id'], $ids) && isset($cat['SubCategory']))
-               $form .= showLevel($cat['SubCategory'], $pars . '/' . Inflector::slug($cat['Category']['name']), $url, $ids );
+               $form .= showLevel($cat['SubCategory'], $url, $ids );
             $form .= '</li>';
+            $count++;
          endforeach;
          $form .= '</ul>';
          return $form;

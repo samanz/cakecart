@@ -83,6 +83,7 @@ a.addCoupon { background:#F9FAFB url(../img/admin/time_add.png) 5% 50% no-repeat
 #second a.button { background:#444; color:#fff; padding-left:38px; }
 #second a.printInvoice { background:#444 url(../img/admin/printer.png) 8% 50% no-repeat; }
 #second a.editOrder { background:#444 url(../img/admin/package_link.png) 8% 50% no-repeat; }
+#second a.chargeOrder { background:#444 url(../img/admin/money_dollar.png) 8% 50% no-repeat; }
 
 
 /* Order Page */

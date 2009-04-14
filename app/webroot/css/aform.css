@@ -23,6 +23,12 @@ div.name { float:left; margin:10px; }
 div.name input { width:430px; }
 div.price { clear:both; }
 
+/* Options */
+#options fieldset { float:left; width:10%; text-align:center; padding:25px 10px;}
+#options { overflow:hidden; zoom:1;}
+#options .optiondetails { float:right; width:85%; }
+
+
 
 /* Order */
 #billing, #shipping, #shipping_method, #payment_method { height:250px; }
