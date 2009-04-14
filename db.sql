@@ -157,13 +157,13 @@ CREATE TABLE `order_items` (
 	FOREIGN KEY (`product_id`) REFERENCES products(`id`)
 );
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `price`, `quantity`)
-	VALUES (0, 1, 1, '149.99', 1);
+	VALUES (1, 1, 1, '149.99', 1);
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `price`, `quantity`)
-	VALUES (1, 1, 2, '339.99', 1);
+	VALUES (2, 2, 2, '339.99', 2);
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `price`, `quantity`)
-	VALUES (2, 2, 1, '149.99', 1);
+	VALUES (3, 2, 1, '149.99', 1);
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `price`, `quantity`)
-	VALUES (3, 2, 2, '339.99', 1);
+	VALUES (4, 2, 2, '339.99', 1);
 
 
 # Additional Images Table

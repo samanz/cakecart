@@ -4,7 +4,7 @@ class CategoriesController extends AppController {
 	var $layout = 'shop';
 	var $uses = array('Category', 'Product');
 	var $components = array('Url', 'Session', 'Imagef');
-	var $helpers = array('Url', 'Html');
+	var $helpers = array('Url', 'Html', 'Thumbnail');
 	
 	function beforeFilter() {
 	   $this->setUser();
@@ -64,24 +64,6 @@ class CategoriesController extends AppController {
 			$categories = $this->Category->theRoots();
 			$this->set('categories', $categories);
 		 }
-	}
-	function show_old() {
-		list($id,$ids, $urls) = $this->Url->parents($this->params['pass']);
-		$this->params['ids'] = explode('/', $ids);
-		$this->params['bread'] = explode('/', $urls);
-		debug($this->params);
-		$this->Category->bindModel( array('hasMany'=> array('Products')));
-		$category = $this->Category->find(array('Category.id' => $id));
-		$this->set('category', $category);
-		$this->set('urls', $urls);
-		debug($urls);
-		if(isset($category['Products'][0])) {
-			$products = $this->Product->find('all', array('conditions' =>
-					array('Product.category_id' => $id)
-				));
-			$this->set('products', $products);
-			$this->render('products');
-		}
 	}
 	function show() {
 		$category = $this->_getCategory();

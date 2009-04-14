@@ -3,7 +3,7 @@ class ProductsController extends AppController {
 	var $name = 'Products';
 	var $layout = 'shop';
 	var $components = array('Url', 'Session', 'Imagef');
-	var $helpers = array('Html', 'Url');
+	var $helpers = array('Html', 'Url', 'Thumbnail');   
 	var $uses = array('Product', 'Category', 'Image');
 	
 	function beforeFilter() {

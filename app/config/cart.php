@@ -4,6 +4,10 @@
 	$config['Company']['phone'] = '555-55-55';
 	$config['Image']['folder'] = 'img/products/';
 	$config['Image']['cat_folder'] = 'img/categories/';
+	$config['Image']['thumb_width'] = "150";
+	$config['Image']['thumb_height'] = "100";
+	$config['Image']['thumb_quality'] = "80";
+	
 	
 	$config['Address']['states'] = array(
    "AL"=>"AL",
