@@ -18,20 +18,20 @@ CREATE TABLE `categories` (
 
 # Category test data 
 
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
-	VALUES (1, 'Telescopes', 0, 'telescope.jpg', 0, 'Telescopes');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
-	VALUES (2, 'Binoculars', 0 , 'binos.jpg', 1, 'Binoculars');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
-	VALUES (3, 'Accessories', 0, 'access.jpg', 2, 'Accessories');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
-	VALUES (4, 'Reflecting', 1, 'access.jpg', 2, 'Telescopes/Reflecting');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
-	VALUES (5, 'Lenses', 3, 'lens.jpg', 1, 'Accessories/Lenses');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
-	VALUES (6, 'Celestron', 5, 'celestron.jpg', 1, 'Accessories/Lenses/Celestron');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`)
-	VALUES (7, 'Refracting', 1, 'refract.jpg', 1, 'Telescopes/Refracting');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+	VALUES (1, 'Telescopes', 0, 'telescope.jpg', 0, 'Telescopes', '1');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+	VALUES (2, 'Binoculars', 0 , 'binos.jpg', 1, 'Binoculars', '2');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+	VALUES (3, 'Accessories', 0, 'access.jpg', 2, 'Accessories', '3');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+	VALUES (4, 'Reflecting', 1, 'access.jpg', 2, 'Telescopes/Reflecting', '1/3');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+	VALUES (5, 'Lenses', 3, 'lens.jpg', 1, 'Accessories/Lenses', '3/5');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+	VALUES (6, 'Celestron', 5, 'celestron.jpg', 1, 'Accessories/Lenses/Celestron', '3/5/6');
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+	VALUES (7, 'Refracting', 1, 'refract.jpg', 1, 'Telescopes/Refracting', '1/7');
 
 # Products table
 
