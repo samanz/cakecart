@@ -4,9 +4,22 @@
 	$config['Company']['phone'] = '555-55-55';
 	$config['Image']['folder'] = 'img/products/';
 	$config['Image']['cat_folder'] = 'img/categories/';
+	
 	$config['Image']['thumb_width'] = "150";
 	$config['Image']['thumb_height'] = "100";
 	$config['Image']['thumb_quality'] = "80";
+	
+	$config['Image']['prod_image_width'] = "250";
+	$config['Image']['prod_image_height'] = "250";
+	$config['Image']['prod_image_quality'] = "80";
+	
+	$config['Image']['fprods_image_width'] = "150";
+	$config['Image']['fprods_image_height'] = "150";
+	$config['Image']['fprods_image_quality'] = "80";
+	
+	$config['Image']['cart_image_width'] = "100";
+	$config['Image']['cart_image_height'] = "100";
+	$config['Image']['cart_image_quality'] = "80";
 	
 	
 	$config['Address']['states'] = array(

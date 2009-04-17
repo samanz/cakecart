@@ -14,7 +14,7 @@
                <?php echo $form->input('id', array('type' => 'hidden', 'value' => $item['id'])); ?>
             <?php echo $form->end('Remove'); ?>
          </td>
-         <td><?php echo $html->image('products/' . $item['Product']['image'], array('width' => '100'));?>
+         <td><?php echo $url->cart_image($item['Product']);?>
          <td><?php echo $url->prod_link($item['Product'], '', false); ?></td>
          <td>
             <?php echo $form->create('CartItem', array('action' => 'change')); ?>

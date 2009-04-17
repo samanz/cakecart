@@ -1,7 +1,7 @@
 <h2><?php echo $product['Product']['name']; ?></h2>
 <p id = "model"><?php echo $product['Product']['model']; ?></p>
 <div id = "image">
-   <?php echo $html->image('products/' . $product['Product']['image']); ?>
+   <?php echo $url->prod_image($product['Product']); ?>
 </div>
 <div id = "description">
    <?php echo $product['Product']['description']; ?>
