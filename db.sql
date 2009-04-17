@@ -18,19 +18,19 @@ CREATE TABLE `categories` (
 
 # Category test data 
 
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, `ids`)
 	VALUES (1, 'Telescopes', 0, 'telescope.jpg', 0, 'Telescopes', '1');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, `ids`)
 	VALUES (2, 'Binoculars', 0 , 'binos.jpg', 1, 'Binoculars', '2');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, `ids`)
 	VALUES (3, 'Accessories', 0, 'access.jpg', 2, 'Accessories', '3');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, `ids`)
 	VALUES (4, 'Reflecting', 1, 'access.jpg', 2, 'Telescopes/Reflecting', '1/3');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, `ids`)
 	VALUES (5, 'Lenses', 3, 'lens.jpg', 1, 'Accessories/Lenses', '3/5');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, `ids`)
 	VALUES (6, 'Celestron', 5, 'celestron.jpg', 1, 'Accessories/Lenses/Celestron', '3/5/6');
-INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, 'ids')
+INSERT INTO categories (`id`, `name`, `parent_id`, `image`, `order`, `url`, `ids`)
 	VALUES (7, 'Refracting', 1, 'refract.jpg', 1, 'Telescopes/Refracting', '1/7');
 
 # Products table
@@ -127,6 +127,10 @@ CREATE TABLE `orders` (
 	`bill_city` VARCHAR(225) NOT NULL,
 	`bill_state` VARCHAR(2) NOT NULL,
 	`bill_zip` INT(5) NOT NULL,
+	`credit_number` VARCHAR(50) NOT NULL,
+	`credit_month` INT(2) NOT NULL,
+	`credit_year` INT(4) NOT NULL,
+	`credit_cvv` VARCHAR(4) NOT NULL,
 	`shipping` VARCHAR(50) NOT NULL,
 	`tax` VARCHAR(50) NOT NULL,
 	`paid` ENUM ('0', '1') NOT NULL default '0',
