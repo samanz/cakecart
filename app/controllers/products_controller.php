@@ -4,7 +4,7 @@ class ProductsController extends AppController {
 	var $layout = 'shop';
 	var $components = array('Url', 'Session', 'Imagef');
 	var $helpers = array('Html', 'Url', 'Thumbnail');   
-	var $uses = array('Product', 'Category', 'Image');
+	var $uses = array('Product', 'Category', 'Image', 'Brand', 'Option', 'OptionDetail');
 	
 	function beforeFilter() {
 	   $this->setUser();
@@ -13,7 +13,8 @@ class ProductsController extends AppController {
 	}
 	
 	function index() {
-		$this->set('products', $this->Product->find('all'));
+		$this->set('feat', $this->Product->find('all', array('conditions' => array('featured' => '1'))));
+		$this->set('new', $this->Product->find('all', array('conditions' => array('new' => '1'))));
 	}
 	function show($id = null) {
 		$product = $this->Product->find(array('Product.id' => $id));
@@ -27,6 +28,7 @@ class ProductsController extends AppController {
 	function admin_add() {
 	   $this->layout = 'admin';
 	   $this->set('current', 'catalog');
+	   $this->set('sidebar', array('admin_product'));
 		list($id,$ids, $urls) = $this->Url->parents($this->params['pass']);
 		$this->params['bread'] = explode('/', $urls);
 	   if(!empty($this->data)) {
@@ -34,6 +36,7 @@ class ProductsController extends AppController {
 	         $this->data['Product']['image'] = $this->Imagef->save( $this->data['Product']['image_url'] );
 	      }
 	      $this->data['Product']['category_id'] = $id;
+	      $this->data['Product']['brand_id'] = $this->_brand($this->data['Product']);
 	      if($this->Product->save($this->data)) {
 	         $product_id = $this->Product->getLastInsertId();
 	         $this->_addImages($product_id, $this->data);
@@ -43,6 +46,24 @@ class ProductsController extends AppController {
 	      
 	   }
 	}
+	
+	function _brand($prod) {
+		if($prod['brand'] != '') {
+			$brand = $this->Brand->find("Brand.name = '" . $prod['brand'] . "'");
+			
+			if( isset($brand['Brand']['id']) ) {
+				return $brand['Brand']['id'];
+			} else {
+				$this->data['Brand']['name'] = $prod['brand'];
+				if($this->Brand->save($this->data)){
+					return $this->Brand->getLastInsertId();
+				} else {
+					return 0;
+				}
+			}
+		}
+	}
+	
 	
 	function _addImages($product_id, $cdata) {
 	      if(@$cdata['Image']['1'] != '') {
@@ -58,10 +79,12 @@ class ProductsController extends AppController {
 	}
 	
 	function _removeImages($form) {
-	   foreach($form['delimage'] as $image) {
-			if($image['del'] == 1)
-				$this->Image->del($image['id']);
-		}
+	   if(isset($form['delimage'])){
+	      foreach($form['delimage'] as $image) {
+			   if($image['del'] == 1)
+				   $this->Image->del($image['id']);
+		   }
+	   }
 	}
 	
 	function admin_edit($id = null) {
@@ -77,15 +100,50 @@ class ProductsController extends AppController {
 	   } else {
 	      if($this->Imagef->check($this->data['Product']['image_url'])) {
 	         $this->data['Product']['image'] = $this->Imagef->save($this->data['Product']['image_url']);	
-	      }		
+	      }
+	      $this->data['Product']['brand_id'] = $this->_brand($this->data['Product']);
+	      if(!empty($this->data['Option'])) 
+            $this->data['Option']['Option'] = $this->_addOptions($this->data['Option']);
+         //debug($this->data);
 	      if($this->Product->save($this->data)) {
 	         $product_id = $this->data['Product']['id'];
+	         if(!empty($this->data['removeOption']))
+	            $this->_removeOptions($product_id, $this->data['removeOption']);
 	         $this->_removeImages($this->params['form']);
 	         $this->_addImages($product_id, $this->data);
 	         $this->Session->setFlash('Product Edited');
 	         $this->redirect('/admin/categories/show/' . implode('/', $url));
 	      }
 	   }
+	}
+	
+	function _removeOptions($product_id, $options) {
+	   foreach($options as $option) {
+	      $this->Product->ProductsOption->deleteAll(array('product_id' =>
+         $product_id, 'option_id' => $option), false);
+	   }
+	}
+	
+	function _addOptions($options) {
+	   $option_ids = array();
+	   foreach($options as $option) {
+	      $data['Option']['name'] = $option['name'];
+	      $this->Option->save($data);
+	      $option_id = $this->Option->getLastInsertId();
+	      foreach($option['OptionDetail'] as $detail) {
+	         $data['OptionDetail']['name'] = $detail['name'];
+ 			   $data['OptionDetail']['price'] = $detail['price'];
+ 			   $data['OptionDetail']['weight'] = $detail['weight'];
+ 			   $data['OptionDetail']['option_id'] = $option_id;
+ 			   if(!$this->OptionDetail->save($data)) {
+ 				   die('Could not write data');
+ 			   }
+ 			   $this->OptionDetail->id = false;
+	      } 
+	      $option_ids[] = $option_id;
+	      $this->Option->id = false;
+	   }
+	   return $option_ids;
 	}
 	
 	function admin_remove($id = null) {

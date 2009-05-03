@@ -2,8 +2,9 @@
    <h3></h3>
    <h3><?php echo $html->link('Print Invoice', '/admin/orders/invoice/' . $order['Order']['id'], array('class' => 'button printInvoice', 'target' => '_blank')); ?></h3>
 <h3><?php echo $html->link('Edit Order', '/admin/orders/edit/' . $order['Order']['id'], array('class' => 'button editOrder')); ?></h3>
+<?php if($order['Order']['payment_method'] == 0 && $order['Order']['charged'] == 0):?>
 <h3><?php echo $html->link('Charge Card', '/admin/orders/chargeCard/' . $order['Order']['id'], array('class' => 'button chargeOrder')); ?></h3>
-
+<?php endif; ?>
 <?php 
    echo $form->create('Order', array('action' => 'status'));
    echo $form->hidden('id');

@@ -10,6 +10,14 @@ class OrdersController extends AppController {
 	      $this->Auth->allow('*');
 	}
 	
+	function _total($order) {
+      $total = 0;
+      if(!isset($order['OrderItems'])) return 0;
+      foreach($order['OrderItems'] as $item)
+         $total += $item['price'] * $item['quantity'];
+      return $total;
+   }
+   
    function admin_index() {
       $this->layout = 'admin';
       $this->set('current', 'orders');
@@ -38,7 +46,8 @@ class OrdersController extends AppController {
                           "zip" => $order['Order']['bill_zip'],
                           "country" => "USA");
   
-      $response = $this->AuthorizeNet->chargeCard(Configure::read('Authorize.login');, Configure::read('Authorize.pass');, '4111111111111111', '01', '2009', '123', false, 110, 5, 5, "Purchase of Goods", $billinginfo, "email@email.com", "555-555-5555", $shippinginfo);
+      $response = $this->AuthorizeNet->chargeCard(Configure::read('Authorize.login'), Configure::read('Authorize.pass'), $order['Order']['credit_number'], $order['Order']['credit_month'], $order['Order']['credit_year'], $order['Order']['credit_cvv'], Configure::read('Authorize.live'), number_format($this->_total($order), 2,'.',''), number_format($order['Order']['tax'], 2,'.','') , $order['Order']['shipping'], "Purchase of Goods", $billinginfo, $order['User']['email'], $order['User']['email'], $shippinginfo);
+      debug($response);
    }
    function admin_invoice($id) {
       $this->layout = 'invoice';
@@ -75,6 +84,7 @@ class OrdersController extends AppController {
       $this->Order->recursive = 2;
       $order = $this->Order->find(array('Order.id' => $id));
       $this->data = $order;
+      $this->set('total', $this->_total($order));
       $this->set('order', $order);
       $this->set('sidebar', array('admin_order'));
    }

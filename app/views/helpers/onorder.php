@@ -16,5 +16,6 @@ class OnorderHelper extends AppHelper {
       if($order['Order']['status'] == 2) return 'Shipped';
       if($order['Order']['status'] == 3) return 'Delivered';
    }
+   function format($price) { echo '$' . number_format($price,'2'); }
 }
 ?>

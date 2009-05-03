@@ -36,11 +36,11 @@
       <?php elseif($order['Order']['payment_method'] == 0): ?>
       <dd>Credit Card</dd>
       <dt>Credit Card Number</dt>
-      <dd>410000000000000000000</dd>
+      <dd><?php echo $order['Order']['credit_number']; ?></dd>
       <dt>Credit Card Expire</dt>
-      <dd>10/22</dd>
+      <dd><?php echo $order['Order']['credit_month'] . '/' .  $order['Order']['credit_year']; ?></dd>
       <dt>CVV</dt>
-      <dd>316</dd>
+      <dd><?php echo $order['Order']['credit_cvv']; ?></dd>
       <?php elseif($order['Order']['payment_method'] == 2): ?>
       <dd>Google Checkout</dd>
       <dt>Completed Date</dt>
@@ -73,15 +73,15 @@
       </tr>
       <tr class = "info">
          <td colspan = "3">Shipping:</td>
-         <td>$<?php echo $order['Order']['shipping']; ?></td>
+         <td><?php echo $onorder->format($order['Order']['shipping']); ?></td>
       </tr>
       <tr class = "info">
          <td colspan = "3">Tax:</td>
-         <td>$<?php echo $order['Order']['tax']; ?></td>
+         <td><?php echo $onorder->format($order['Order']['tax']); ?></td>
       </tr>
       <tr class = "info">
          <td colspan = "3">Total:</td>
-         <td>$<?php echo $onorder->total($order); ?></td>
+         <td><?php echo $onorder->format($total); ?></td>
       </tr>
    </table>
 </div>

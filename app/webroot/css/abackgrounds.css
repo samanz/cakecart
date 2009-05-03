@@ -85,6 +85,12 @@ a.addCoupon { background:#F9FAFB url(../img/admin/time_add.png) 5% 50% no-repeat
 #second a.editOrder { background:#444 url(../img/admin/package_link.png) 8% 50% no-repeat; }
 #second a.chargeOrder { background:#444 url(../img/admin/money_dollar.png) 8% 50% no-repeat; }
 
+#side_products ul a { padding-left:35px;}
+#side_products ul a.current { font-weight:bold; }
+#second .default a { background: url(../img/admin/layout.png) 8% 50% no-repeat; }
+#second .images a { background: url(../img/admin/images.png) 8% 50% no-repeat; }
+#second .options a { background: url(../img/admin/cog.png) 8% 50% no-repeat; }
+
 
 /* Order Page */
 #bill_to , #ship_to { border:1px solid #999; }
